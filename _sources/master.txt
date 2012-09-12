@@ -4,5 +4,6 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2012/09/12/create_blog_with_tinkerer
    2012/09/12/remodel
 

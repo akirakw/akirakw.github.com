@@ -6,24 +6,24 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Home &mdash; An Artisan&#39;s Build Act</title><!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <title>TinkererでSphinxなブログ環境を構築する &mdash; An Artisan&#39;s Build Act</title><!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="_static/style.css" type="text/css">
-  <link rel="stylesheet" href="_static/modern5.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/webfont.css" type="text/css"><link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
-  <script src="_static/modernizr-2.0.6.min.js"></script>
+  <link rel="stylesheet" href="../../../_static/style.css" type="text/css">
+  <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css"><link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+  <script src="../../../_static/modernizr-2.0.6.min.js"></script>
   <!-- Grab Google CDN's jQuery, fall back to local if offline -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="_static/jquery-1.6.2.min.js"><\/script>')</script><link rel="top" title="An Artisan&#39;s Build Act" href="#" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+  <script>window.jQuery || document.write('<script src="../../../_static/jquery-1.6.2.min.js"><\/script>')</script><link rel="top" title="An Artisan&#39;s Build Act" href="../../../index.html" /><link rel="next" title="REMODEL" href="remodel.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
+        URL_ROOT:    '../../../',
         VERSION:     '0.4.1b',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="_static/fb.js"></script><script type="text/javascript" src="_static/google_analytics.js"></script>
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="../../../_static/fb.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
     <meta property="fb:app_id" content="416990048348378"/>
     
 
@@ -49,23 +49,28 @@
 <body>
   <div id="container"><header>
       <hgroup>
-        <h1><a href="#">An Artisan&#39;s Build Act</a></h1>
+        <h1><a href="../../../index.html">An Artisan&#39;s Build Act</a></h1>
         <h2>とあるビルド職人の、チクチク作業した軌跡</h2>
       </hgroup>
     </header>
 <nav class="clearfix">
       <ul class="main-navigation"><li class="quicklink"><div class="rss">
-        <a href="rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
+        <a href="../../../rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
     </div></li><li class="main-nav">
-          <a href="#">Home</a>
+          <a href="../../../index.html">Home</a>
         </li>
         </ul>
-    </nav><div class="main"><div class="content clearfix"><div class="documentwrapper"><article class="document">
+    </nav><div class="main"><div class="content clearfix"><div class="documentwrapper"><div class="related">
+        <ul>
+            <li class="left"></li>
+            <li class="right"><a href="remodel.html">REMODEL</a> &raquo; </li>
+        </ul>
+    </div><article class="document">
               <div class="timestamp postmeta">
             <span>September 12, 2012</span> 
         </div>
-        <div class="section" id="tinkerersphinx">
-<h1><a href="2012/09/12/create_blog_with_tinkerer.html">TinkererでSphinxなブログ環境を構築する</a></h1>
+    <div class="section" id="tinkerersphinx">
+<h1>TinkererでSphinxなブログ環境を構築する</h1>
 <p><a class="reference external" href="http://tinkerer.me/">Tinkerer</a> でブログ環境を構築した一連の手順を書いておきます。</p>
 <p>概ね <a class="reference external" href="http://tinkerer.me/pages/documentation.html">公式ドキュメント</a> の通りにやればOKでしたが、はまったりカスタマイズ方法に悩んだ部分もあったので。</p>
 <p>使用したOSは Ubuntu 11.04 です。</p>
@@ -106,27 +111,27 @@ tinker --setup
  <span class="mi">8</span> <span class="c"># **************************************************************</span>
  <span class="mi">9</span>
 <span class="mi">10</span> <span class="c"># Change this to the name of your blog</span>
-<span class="mi">11</span> <span class="n">project</span> <span class="o">=</span> <span class="s">'An Artisan</span><span class="se">\'</span><span class="s">s Build Act'</span>
+<span class="mi">11</span> <span class="n">project</span> <span class="o">=</span> <span class="s">&#39;An Artisan</span><span class="se">\&#39;</span><span class="s">s Build Act&#39;</span>
 <span class="mi">12</span>
 <span class="mi">13</span> <span class="c"># Change this to the tagline of your blog</span>
-<span class="mi">14</span> <span class="n">tagline</span> <span class="o">=</span> <span class="s">u'とあるビルド職人の、チクチク作業した軌跡'</span>
+<span class="mi">14</span> <span class="n">tagline</span> <span class="o">=</span> <span class="s">u&#39;とあるビルド職人の、チクチク作業した軌跡&#39;</span>
 <span class="mi">15</span>
 <span class="mi">16</span> <span class="c"># Change this to your name</span>
-<span class="mi">17</span> <span class="n">author</span> <span class="o">=</span> <span class="s">'apirakun'</span>
+<span class="mi">17</span> <span class="n">author</span> <span class="o">=</span> <span class="s">&#39;apirakun&#39;</span>
 <span class="mi">18</span>
 <span class="mi">19</span> <span class="c"># Change this to your copyright string</span>
-<span class="mi">20</span> <span class="n">copyright</span> <span class="o">=</span> <span class="s">'2012, '</span> <span class="o">+</span> <span class="n">author</span>
+<span class="mi">20</span> <span class="n">copyright</span> <span class="o">=</span> <span class="s">&#39;2012, &#39;</span> <span class="o">+</span> <span class="n">author</span>
 <span class="mi">21</span>
 <span class="mi">22</span> <span class="c"># Change this to your blog root URL (required for RSS feed)</span>
-<span class="mi">23</span> <span class="n">website</span> <span class="o">=</span> <span class="s">'http://akirakw.github.com'</span>
+<span class="mi">23</span> <span class="n">website</span> <span class="o">=</span> <span class="s">&#39;http://akirakw.github.com&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id6">
 <h2>記事を作る</h2>
 <p>記事を作成するには、 <tt class="docutils literal"><span class="pre">tinker</span> <span class="pre">-p</span> <span class="pre">'&lt;ページ名&gt;'</span></tt> です。</p>
-<div class="highlight-sh"><div class="highlight"><pre>tinker -p <span class="s1">'hoge'</span>
-New post created as <span class="s1">'&lt;...&gt;/myblog/2012/09/12/hoge.rst'</span>
+<div class="highlight-sh"><div class="highlight"><pre>tinker -p <span class="s1">&#39;hoge&#39;</span>
+New post created as <span class="s1">&#39;&lt;...&gt;/myblog/2012/09/12/hoge.rst&#39;</span>
 </pre></div>
 </div>
 <p>生成されたファイル名が表示されるので、このファイルをを編集します。</p>
@@ -140,7 +145,7 @@ New post created as <span class="s1">'&lt;...&gt;/myblog/2012/09/12/hoge.rst'</s
 <p>基本はこんな感じですが、この他にもビルド対象とならないドラフトファイルを作成したり、ドラフトと本記事を相互に入れたり戻したり、通常のSphinxのような、日付に紐づかない静的なページを作ったりすることが出来ます。私はこのあたりの機能が気に入っています。</p>
 <p>詳しくは公式ドキュメントのこちら <a class="footnote-reference" href="#id8" id="id7">[1]</a> を参照。</p>
 <table class="docutils footnote" frame="void" id="id8" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
+<colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id7">[1]</a></td><td><a class="reference external" href="http://tinkerer.me/doc/tinkering.html">http://tinkerer.me/doc/tinkering.html</a></td></tr>
 </tbody>
@@ -174,56 +179,29 @@ git push origin master
 次回はTinkererのカスタマイズ編です。</p>
 </div>
 </div>
-        <div class="postmeta">
+
+    <div class="postmeta">
         <div class="author">
             <span>Posted by apirakun</span>
         </div>
         <div class="categories">
             <span>
                 Filed under:
-                <a href="categories/sphinx.html">sphinx</a></span>
+                <a href="../../../categories/sphinx.html">sphinx</a></span>
         </div>
         <div class="tags">
             <span>
                 Tags:
-                <a href="tags/sphinx.html">sphinx</a>, <a href="tags/tinkerer.html">tinkerer</a>, <a href="tags/document.html">document</a>, <a href="tags/blog.html">blog</a></span>
-        </div>
-        <div class="comments">
-            <a href="http://akirakw.github.com/2012/09/12/create_blog_with_tinkerer.html#comments"><fb:comments-count href="http://akirakw.github.com/2012/09/12/create_blog_with_tinkerer.html"></fb:comments-count> comment(s)</a>
-        </div>
-    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>September 12, 2012</span> 
-        </div>
-        <div class="section" id="remodel">
-<h1><a href="2012/09/12/remodel.html">REMODEL</a></h1>
-<p>夏休みということもあり、個人ブログを
-<a class="reference external" href="http://tinkerer.me/">Tinkerer</a> を使って改築してみました <a class="footnote-reference" href="#id2" id="id1">[1]</a> 。</p>
-<p>Sphinxで日々ガシガシドキュメントを書いているので、
-これで快適ブログライフがおくれるかも、と淡い期待をよせています。</p>
-<p>ビルド職人的な内容を中心に、技術ネタなどを書くつもりですが、はたして...。</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>はてなからGitHub Pagesに引越ししたので、改築というより建て替えですが...</td></tr>
-</tbody>
-</table>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by apirakun</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/misc.html">misc</a></span>
+                <a href="../../../tags/sphinx.html">sphinx</a>, <a href="../../../tags/tinkerer.html">tinkerer</a>, <a href="../../../tags/document.html">document</a>, <a href="../../../tags/blog.html">blog</a></span>
         </div>
         
-        <div class="comments">
-            <a href="http://akirakw.github.com/2012/09/12/remodel.html#comments"><fb:comments-count href="http://akirakw.github.com/2012/09/12/remodel.html"></fb:comments-count> comment(s)</a>
-        </div>
-    </div><div class="archive_link">
-        <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
-    </div></article></div><aside class="sidebar"><section><div class="widget">
+    </div>
+    <div id="comments">   <div class="fb-comments" data-href="http://akirakw.github.com/2012/09/12/create_blog_with_tinkerer.html">   </div></div></article><div class="related">
+        <ul>
+            <li class="left"></li>
+            <li class="right"><a href="remodel.html">REMODEL</a> &raquo; </li>
+        </ul>
+    </div></div><aside class="sidebar"><section><div class="widget">
     <h1>Twitter</h1>
     <a class="twitter-timeline" width="250" height="500" href="https://twitter.com/apirakun" data-widget-id="245795643619151872">@apirakun からのツイート</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -231,17 +209,17 @@ git push origin master
 </section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
-            <a href="2012/09/12/create_blog_with_tinkerer.html">TinkererでSphinxなブログ環境を構築する</a>
+            <a href="#">TinkererでSphinxなブログ環境を構築する</a>
         </li><li>
-            <a href="2012/09/12/remodel.html">REMODEL</a>
+            <a href="remodel.html">REMODEL</a>
         </li></ul>
 </div>
 </section><section><div class="widget">
     <h1>Categories</h1>
-    <ul><li><a href="categories/misc.html">misc</a> (1)</li><li><a href="categories/sphinx.html">sphinx</a> (1)</li></ul>
+    <ul><li><a href="../../../categories/misc.html">misc</a> (1)</li><li><a href="../../../categories/sphinx.html">sphinx</a> (1)</li></ul>
 </div></section><section><div class="widget" id="searchbox">
     <h1>Search</h1>
-    <form action="search.html" method="get">
+    <form action="../../../search.html" method="get">
         <input type="text" name="q" />
         <button type="submit"><span class="webfont">L</span></button>
     </form>

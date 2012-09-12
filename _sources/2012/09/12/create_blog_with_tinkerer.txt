@@ -1,0 +1,134 @@
+TinkererでSphinxなブログ環境を構築する
+======================================
+`Tinkerer`_ でブログ環境を構築した一連の手順を書いておきます。
+
+概ね `公式ドキュメント`_ の通りにやればOKでしたが、はまったりカスタマイズ方法に悩んだ部分もあったので。
+
+使用したOSは Ubuntu 11.04 です。
+
+..  _`Tinkerer`: http://tinkerer.me/
+..  _`公式ドキュメント`: http://tinkerer.me/pages/documentation.html
+
+Tinkererとはなに？
+------------------
+簡単に言うと、Sphinxをブログ作成、管理用に特化させたブログツールです。
+
+Sphinxの機能はほぼそのまま使えるようなので、Sphinxに慣れている職人さんたちは、
+これでブログを書くといろいろ便利そうなのは推して知るべしだと思います。
+
+Tinkererのインストール
+----------------------
+easy_install を使ってtinkererをインストールします。
+
+..  code-block:: sh
+    
+    sudo easy_install tinkerer
+
+これを書いている時点では、version 0.4.1b がインストールされました。
+
+日本語環境用のパッチを当てる
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+手元のUbuntuは日本語環境ですが、どうやら 0.4.1b 時点では日本語環境でTinkererを使うと
+Unicode errorが発生していまい、ビルドが出来ないようです。以下のissueが上がっています。
+
+https://bitbucket.org/vladris/tinkerer/issue/47/a-unicode-error-occurred-when-lc_all-is
+
+上記ページに貼ってあるパッチを適用すると、この問題が解消されました。
+手元の環境では ``/usr/local/lib/python2.7/dist-packages/Tinkerer-0.4.1b-py2.7.egg/tinkerer/cmdline.py`` を編集し、
+パッチの内容を適用( ``import locale`` と ``locale.setlocale(...`` の行を削除) しました。
+
+セットアップ
+------------
+まず ``tinkerer`` コマンドを使ってブログ作業用のディレクトリを作成します。
+
+..  code-block:: sh
+    
+    mkdir myblog
+    cd myblog
+    tinker --setup
+    
+カレントディレクトリにいろいろファイルが作成されます。このうち ``conf.py`` を編集してブログタイトルやAuthorなどの初期設定を行います。
+
+..  code-block:: python
+
+      6 # **************************************************************
+      7 # TODO: Edit the lines below
+      8 # **************************************************************
+      9 
+     10 # Change this to the name of your blog
+     11 project = 'An Artisan\'s Build Act'
+     12 
+     13 # Change this to the tagline of your blog
+     14 tagline = u'とあるビルド職人の、チクチク作業した軌跡'
+     15 
+     16 # Change this to your name
+     17 author = 'apirakun'
+     18 
+     19 # Change this to your copyright string
+     20 copyright = '2012, ' + author
+     21 
+     22 # Change this to your blog root URL (required for RSS feed)
+     23 website = 'http://akirakw.github.com'
+
+記事を作る
+----------
+記事を作成するには、 ``tinker -p '<ページ名>'`` です。
+
+..  code-block:: sh
+
+    tinker -p 'hoge'
+    New post created as '<...>/myblog/2012/09/12/hoge.rst'
+
+生成されたファイル名が表示されるので、このファイルをを編集します。
+
+..  code-block:: sh
+    
+    vi <...>/myblog/2012/09/12/hoge.rst
+
+編集が終わったら、 ``tinker -b`` でビルドします。 Sphinxの ``make clean html`` に相当します。
+
+..  code-block:: sh
+    
+    tinker -b
+
+基本はこんな感じですが、この他にもビルド対象とならないドラフトファイルを作成したり、ドラフトと本記事を相互に入れたり戻したり、通常のSphinxのような、日付に紐づかない静的なページを作ったりすることが出来ます。私はこのあたりの機能が気に入っています。
+
+詳しくは公式ドキュメントのこちら [#]_ を参照。
+
+..  [#] http://tinkerer.me/doc/tinkering.html
+
+GitHub Pagesに公開する
+----------------------
+作成したページ群をホストします。公式ドキュメントでは BitBucket にホストする方法が紹介されていますが、ここでは GitHub Pages に公開します。
+
+GitHub Pages にホストする場合、アカウントに紐づくページとして公開する方法と、プロジェクトに紐づくページとして公開する方法があります。今回は個人ブログということで、前者のアカウントに紐づくページとして公開します。
+
+アカウントに紐づくページとして公開する場合、一例として以下のような手順を踏みます。
+
+1. GitHubで ``<アカウント名>.github.com`` というリポジトリを作成する。
+2. 作成したリポジトリを ``git clone`` して、直下に ``.nojekyll`` ファイルを作成する。
+3. Tinkererのビルドで生成した ``myblog/blog/html`` ディレクトリ以下のファイル郡を ``master`` ブランチに ``push`` する
+
+2. の手順が少し注意すべき点で、GitHub Pagesでは Jekyll というコンテンツ管理のシステムがデフォルトで有効になるようで、この Jekyll  がアンダースコアを含むディレクトリをうまく処理出来ないため、Sphinxがデフォルトで利用する ``_static`` や ``_template`` などのディレクトリをうまく扱えないようです。この Jekyll を無効にするために、 ``.nojekyll`` を配置する必要があります。
+
+以下、2.と3.の手順例です。
+
+..  code-block:: sh
+     
+    git clone git@github.com:akirakw/akirakw.github.com.git
+    cd akirakw.github.com
+    touch .nojekyll
+    rsync -av <...>/myblog/blog/html/ .
+    git add .
+    git commit -m "First commit of blog contents."
+    git push origin master
+
+これで完了です。最初だけはGitHub Pageの公開反映に数分かかるようです。数分後に ``http://<アカウント名>.github.com`` にアクセスすると、ブログページが表示できると思います。
+
+とりあえず今回はブログ公開出来たところまで。
+次回はTinkererのカスタマイズ編です。
+
+.. author:: default
+.. categories:: sphinx
+.. tags:: sphinx,tinkerer,document,blog
+.. comments::
