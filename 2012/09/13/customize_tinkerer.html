@@ -6,24 +6,24 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Home &mdash; An Artisan&#39;s Build Act</title><!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <title>Tinkererをカスタマイズする &mdash; An Artisan&#39;s Build Act</title><!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="_static/style.css" type="text/css">
-  <link rel="stylesheet" href="_static/modern5.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/webfont.css" type="text/css"><link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
-  <script src="_static/modernizr-2.0.6.min.js"></script>
+  <link rel="stylesheet" href="../../../_static/style.css" type="text/css">
+  <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css"><link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+  <script src="../../../_static/modernizr-2.0.6.min.js"></script>
   <!-- Grab Google CDN's jQuery, fall back to local if offline -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="_static/jquery-1.6.2.min.js"><\/script>')</script><link rel="top" title="An Artisan&#39;s Build Act" href="#" /><link rel="next" title="Older" href="page1.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+  <script>window.jQuery || document.write('<script src="../../../_static/jquery-1.6.2.min.js"><\/script>')</script><link rel="top" title="An Artisan&#39;s Build Act" href="../../../index.html" /><link rel="next" title="TinkererでSphinxなブログ環境を構築する" href="../12/create_blog_with_tinkerer.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
+        URL_ROOT:    '../../../',
         VERSION:     '0.4.1b',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="_static/fb.js"></script><script type="text/javascript" src="_static/google_analytics.js"></script>
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="../../../_static/fb.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
     <meta property="fb:app_id" content="416990048348378"/>
     
 
@@ -49,29 +49,30 @@
 <body>
   <div id="container"><header>
       <hgroup>
-        <h1><a href="#">An Artisan&#39;s Build Act</a></h1>
+        <h1><a href="../../../index.html">An Artisan&#39;s Build Act</a></h1>
         <h2>とあるビルド職人の、チクチク作業した軌跡</h2>
       </hgroup>
     </header>
 <nav class="clearfix">
       <ul class="main-navigation"><li class="quicklink"><div class="rss">
-        <a href="rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
+        <a href="../../../rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
     </div></li><li class="main-nav">
-          <a href="#">Home</a>
+          <a href="../../../index.html">Home</a>
         </li>
         </ul>
     </nav><div class="main"><div class="content clearfix"><div class="documentwrapper"><div class="related">
         <ul>
             <li class="left"></li>
-            <li class="right"><a href="page1.html">Older</a> &raquo; </li>
+            <li class="right"><a href="../12/create_blog_with_tinkerer.html">TinkererでSphinxなブログ環境を構築する</a> &raquo; </li>
         </ul>
     </div><article class="document">
-              <div class="timestamp postmeta">
+              
+    <div class="timestamp postmeta">
             <span>September 13, 2012</span> 
         </div>
-        <div class="section" id="tinkerer">
-<h1><a href="2012/09/13/customize_tinkerer.html">Tinkererをカスタマイズする</a></h1>
-<p>前回のポスト <a class="reference internal" href="2012/09/13/../12/create_blog_with_tinkerer.html"><em>TinkererでSphinxなブログ環境を構築する</em></a> でとりあえずSphinxなブログ環境を構築しましたが、デフォルトだとちょっと寂しい感じなので、いろいろカスタマイズしてみます。</p>
+    <div class="section" id="tinkerer">
+<h1>Tinkererをカスタマイズする</h1>
+<p>前回のポスト <a class="reference internal" href="../12/create_blog_with_tinkerer.html"><em>TinkererでSphinxなブログ環境を構築する</em></a> でとりあえずSphinxなブログ環境を構築しましたが、デフォルトだとちょっと寂しい感じなので、いろいろカスタマイズしてみます。</p>
 <div class="section" id="id1">
 <h2>コメント機能をつける</h2>
 <p><a class="reference external" href="http://tinkerer.me/">Tinkerer</a> では内部ではコメント管理の機能を持っていないため、外部のコメント管理用サービスを利用してコメントを扱います。</p>
@@ -83,12 +84,12 @@
 <p>Facebook Commentsを利用する <a class="footnote-reference" href="#id6" id="id4">[1]</a> には、まず <cite>conf.py</cite> を編集し、extentionの設定をデフォルトの Disqus から Facebook Comments のものに置き換えます。</p>
 <p>デフォルトは以下のようになっています。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="mi">52</span> <span class="c"># Add other Sphinx extensions here</span>
-<span class="mi">53</span> <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s">'tinkerer.ext.blog'</span><span class="p">,</span> <span class="s">'tinkerer.ext.disqus'</span><span class="p">]</span>
+<span class="mi">53</span> <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;tinkerer.ext.blog&#39;</span><span class="p">,</span> <span class="s">&#39;tinkerer.ext.disqus&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>この <tt class="docutils literal"><span class="pre">tinkerer.ext.disqus</span></tt> を <tt class="docutils literal"><span class="pre">tinkerer.ext.fbcomments</span></tt> に置き換えます。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="mi">52</span> <span class="c"># Add other Sphinx extensions here</span>
-<span class="mi">53</span> <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s">'tinkerer.ext.blog'</span><span class="p">,</span> <span class="s">'tinkerer.ext.fbcomments'</span><span class="p">]</span>
+<span class="mi">53</span> <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;tinkerer.ext.blog&#39;</span><span class="p">,</span> <span class="s">&#39;tinkerer.ext.fbcomments&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>次にこのコメントを管理するための <tt class="docutils literal"><span class="pre">meta</span></tt> タグをページにしこむ必要があります。このため、Tinkererが提供するページのテンプレートを拡張します。</p>
@@ -111,13 +112,13 @@
 <p>上記の <tt class="docutils literal"><span class="pre">$(YOUR_APP_ID)</span></tt> の部分を自分のアプリケーションIDの値に置き換えます。</p>
 <p>この状態でビルドしたコンテンツをホストにアップすると、Facebookのコメント機能が有効になります。</p>
 <table class="docutils footnote" frame="void" id="id6" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
+<colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id4">[1]</a></td><td>さらに詳しい内容は公式ドキュメントの以下を参照してください: <a class="reference external" href="http://tinkerer.me/doc/additional_extensions.html#facebook-comments">http://tinkerer.me/doc/additional_extensions.html#facebook-comments</a></td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id7" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
+<colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id5">[2]</a></td><td>FacebookのアプリケーションIDを取得する方法は検索するとたくさん出てきます。わかりやすいのはこちら: <a class="reference external" href="https://www.ocnk.net/faq/index.php?action=artikel&amp;cat=281579&amp;id=733&amp;artlang=ja">https://www.ocnk.net/faq/index.php?action=artikel&amp;cat=281579&amp;id=733&amp;artlang=ja</a></td></tr>
 </tbody>
@@ -139,7 +140,7 @@
 </div>
 <p>なお、このほかにも <tt class="docutils literal"><span class="pre">tags_cloud.html</span></tt> というタグクラウドを出すものも提供されているのですが、これを追加するとビルドに失敗してしまいました。時間があるときに調べるかも...。</p>
 <table class="docutils footnote" frame="void" id="id11" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
+<colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id10">[3]</a></td><td>さらに詳しい内容は公式ドキュメントの以下を参照してください: <a class="reference external" href="http://tinkerer.me/doc/more_tinkering.html#sidebar">http://tinkerer.me/doc/more_tinkering.html#sidebar</a></td></tr>
 </tbody>
@@ -181,13 +182,13 @@
 </div>
 <p>これでビルドすると、サイドバーに追加されます。</p>
 <table class="docutils footnote" frame="void" id="id15" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
+<colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id13">[4]</a></td><td><a class="reference external" href="https://dev.twitter.com/docs/embedded-timelines">https://dev.twitter.com/docs/embedded-timelines</a></td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id16" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
+<colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id14">[5]</a></td><td>Facebook Commentsを利用する の手順を実施済みの場合は <tt class="docutils literal"><span class="pre">_template</span></tt> は既に作ってあるはずです。</td></tr>
 </tbody>
@@ -224,7 +225,7 @@
 </div>
 <p>これだと、コメント機能が有効になっている場合にはコメント欄をクリックしないとツイートボタンが見られない、という状態になってしまいました。そこで少し微妙ですが、親の定義を完全に上書きし、本文の直後にツイートボタンがくるよう設定しました。</p>
 <table class="docutils footnote" frame="void" id="id19" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
+<colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id18">[6]</a></td><td>ここから作れます: <a class="reference external" href="https://twitter.com/about/resources/buttons">https://twitter.com/about/resources/buttons</a></td></tr>
 </tbody>
@@ -236,13 +237,13 @@
 <p>まず Google Analyticsのサイト <a class="footnote-reference" href="#id23" id="id21">[8]</a> にいき、アカウントを作成します。</p>
 <p>アカウント作成後にJavaScriptのスクリプトが画面に表示されるので、スクリプト文字列をコピーしておきます。この時の注意点で、 <tt class="docutils literal"><span class="pre">&lt;script&gt;</span></tt> タグの部分に囲まれた文字列が出力されますが、タグ自身はコピーせず、タグの中身だけをコピーしてください。</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">_gaq</span> <span class="o">=</span> <span class="nx">_gaq</span> <span class="o">||</span> <span class="p">[];</span>
-<span class="nx">_gaq</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="s1">'_setAccount'</span><span class="p">,</span> <span class="s1">'UA-34761823-1'</span><span class="p">]);</span>
-<span class="nx">_gaq</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="s1">'_trackPageview'</span><span class="p">]);</span>
+<span class="nx">_gaq</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="s1">&#39;_setAccount&#39;</span><span class="p">,</span> <span class="s1">&#39;UA-34761823-1&#39;</span><span class="p">]);</span>
+<span class="nx">_gaq</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="s1">&#39;_trackPageview&#39;</span><span class="p">]);</span>
 
 <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">ga</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span> <span class="nx">ga</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">'text/javascript'</span><span class="p">;</span> <span class="nx">ga</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-  <span class="nx">ga</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'https:'</span> <span class="o">==</span> <span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">?</span> <span class="s1">'https://ssl'</span> <span class="o">:</span> <span class="s1">'http://www'</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'.google-analytics.com/ga.js'</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'script'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span> <span class="nx">s</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">ga</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">ga</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span> <span class="nx">ga</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span> <span class="nx">ga</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="nx">ga</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;https:&#39;</span> <span class="o">==</span> <span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">?</span> <span class="s1">&#39;https://ssl&#39;</span> <span class="o">:</span> <span class="s1">&#39;http://www&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.google-analytics.com/ga.js&#39;</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span> <span class="nx">s</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">ga</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
 <span class="p">})();</span>
 </pre></div>
 </div>
@@ -262,13 +263,13 @@
 <p>この状態でビルドしたコンテンツをホストにアップすると、Google Analyticsが有効になります。手元ではリアルタイム検索で数秒で情報が反映されていました。</p>
 <p>動作していないと思ったら、JavaScriptがうまく設定できていないか疑ってみてください。コピペミスでJavaScriptエラーなどが出ているかもしれません（私はそれで少しはまりました）。</p>
 <table class="docutils footnote" frame="void" id="id22" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
+<colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id20">[7]</a></td><td>さらに詳しくは公式ドキュメントの以下を参照してください: <a class="reference external" href="http://tinkerer.me/doc/more_tinkering.html#enabling-google-analytics">http://tinkerer.me/doc/more_tinkering.html#enabling-google-analytics</a></td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id23" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
+<colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id21">[8]</a></td><td><a class="reference external" href="http://google.com/analytics">http://google.com/analytics</a></td></tr>
 </tbody>
@@ -280,159 +281,31 @@
 <p>あとはCSSもカスタマイズしたいなーと思っていますが、その辺りは結構疎いので、はたしてやるかどうか...。</p>
 </div>
 </div>
-        <div class="postmeta">
+
+    <br/>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <div class="postmeta">
         <div class="author">
             <span>Posted by apirakun</span>
         </div>
         <div class="categories">
             <span>
                 Filed under:
-                <a href="categories/sphinx.html">sphinx</a></span>
+                <a href="../../../categories/sphinx.html">sphinx</a></span>
         </div>
         <div class="tags">
             <span>
                 Tags:
-                <a href="tags/sphinx.html">sphinx</a>, <a href="tags/tinkerer.html">tinkerer</a>, <a href="tags/document.html">document</a>, <a href="tags/blog.html">blog</a></span>
+                <a href="../../../tags/sphinx.html">sphinx</a>, <a href="../../../tags/tinkerer.html">tinkerer</a>, <a href="../../../tags/document.html">document</a>, <a href="../../../tags/blog.html">blog</a></span>
         </div>
-        <div class="comments">
-            <a href="http://akirakw.github.com/2012/09/13/customize_tinkerer.html#comments"><fb:comments-count href="http://akirakw.github.com/2012/09/13/customize_tinkerer.html"></fb:comments-count> comment(s)</a>
-        </div>
-    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>September 12, 2012</span> 
-        </div>
-        <div class="section" id="tinkerersphinx">
-<h1><a href="2012/09/12/create_blog_with_tinkerer.html">TinkererでSphinxなブログ環境を構築する</a></h1>
-<p><a class="reference external" href="http://tinkerer.me/">Tinkerer</a> でブログ環境を構築した一連の手順を書いておきます。</p>
-<p>概ね <a class="reference external" href="http://tinkerer.me/pages/documentation.html">公式ドキュメント</a> の通りにやればOKでしたが、はまったりカスタマイズ方法に悩んだ部分もあったので。</p>
-<p>使用したOSは Ubuntu 11.04 です。</p>
-<div class="section" id="id2">
-<h2>Tinkererとはなに？</h2>
-<p>簡単に言うと、Sphinxをブログ作成、管理用に特化させたブログツールです。</p>
-<p>Sphinxの機能はほぼそのまま使えるようなので、Sphinxに慣れている職人さんたちは、
-これでブログを書くといろいろ便利そうなのは推して知るべしだと思います。</p>
-</div>
-<div class="section" id="id3">
-<h2>Tinkererのインストール</h2>
-<p>easy_install を使ってtinkererをインストールします。</p>
-<div class="highlight-sh"><div class="highlight"><pre>sudo easy_install tinkerer
-</pre></div>
-</div>
-<p>これを書いている時点では、version 0.4.1b がインストールされました。</p>
-<div class="section" id="id4">
-<h3>日本語環境用のパッチを当てる</h3>
-<p>手元のUbuntuは日本語環境ですが、どうやら 0.4.1b 時点では日本語環境でTinkererを使うと
-Unicode errorが発生していまい、ビルドが出来ないようです。以下のissueが上がっています。</p>
-<p><a class="reference external" href="https://bitbucket.org/vladris/tinkerer/issue/47/a-unicode-error-occurred-when-lc_all-is">https://bitbucket.org/vladris/tinkerer/issue/47/a-unicode-error-occurred-when-lc_all-is</a></p>
-<p>上記ページに貼ってあるパッチを適用すると、この問題が解消されました。
-手元の環境では <tt class="docutils literal"><span class="pre">/usr/local/lib/python2.7/dist-packages/Tinkerer-0.4.1b-py2.7.egg/tinkerer/cmdline.py</span></tt> を編集し、
-パッチの内容を適用( <tt class="docutils literal"><span class="pre">import</span> <span class="pre">locale</span></tt> と <tt class="docutils literal"><span class="pre">locale.setlocale(...</span></tt> の行を削除) しました。</p>
-</div>
-</div>
-<div class="section" id="id5">
-<h2>セットアップ</h2>
-<p>まず <tt class="docutils literal"><span class="pre">tinkerer</span></tt> コマンドを使ってブログ作業用のディレクトリを作成します。</p>
-<div class="highlight-sh"><div class="highlight"><pre>mkdir myblog
-<span class="nb">cd </span>myblog
-tinker --setup
-</pre></div>
-</div>
-<p>カレントディレクトリにいろいろファイルが作成されます。このうち <tt class="docutils literal"><span class="pre">conf.py</span></tt> を編集してブログタイトルやAuthorなどの初期設定を行います。</p>
-<div class="highlight-python"><div class="highlight"><pre> <span class="mi">6</span> <span class="c"># **************************************************************</span>
- <span class="mi">7</span> <span class="c"># TODO: Edit the lines below</span>
- <span class="mi">8</span> <span class="c"># **************************************************************</span>
- <span class="mi">9</span>
-<span class="mi">10</span> <span class="c"># Change this to the name of your blog</span>
-<span class="mi">11</span> <span class="n">project</span> <span class="o">=</span> <span class="s">'An Artisan</span><span class="se">\'</span><span class="s">s Build Act'</span>
-<span class="mi">12</span>
-<span class="mi">13</span> <span class="c"># Change this to the tagline of your blog</span>
-<span class="mi">14</span> <span class="n">tagline</span> <span class="o">=</span> <span class="s">u'とあるビルド職人の、チクチク作業した軌跡'</span>
-<span class="mi">15</span>
-<span class="mi">16</span> <span class="c"># Change this to your name</span>
-<span class="mi">17</span> <span class="n">author</span> <span class="o">=</span> <span class="s">'apirakun'</span>
-<span class="mi">18</span>
-<span class="mi">19</span> <span class="c"># Change this to your copyright string</span>
-<span class="mi">20</span> <span class="n">copyright</span> <span class="o">=</span> <span class="s">'2012, '</span> <span class="o">+</span> <span class="n">author</span>
-<span class="mi">21</span>
-<span class="mi">22</span> <span class="c"># Change this to your blog root URL (required for RSS feed)</span>
-<span class="mi">23</span> <span class="n">website</span> <span class="o">=</span> <span class="s">'http://akirakw.github.com'</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id6">
-<h2>記事を作る</h2>
-<p>記事を作成するには、 <tt class="docutils literal"><span class="pre">tinker</span> <span class="pre">-p</span> <span class="pre">'&lt;ページ名&gt;'</span></tt> です。</p>
-<div class="highlight-sh"><div class="highlight"><pre>tinker -p <span class="s1">'hoge'</span>
-New post created as <span class="s1">'&lt;...&gt;/myblog/2012/09/12/hoge.rst'</span>
-</pre></div>
-</div>
-<p>生成されたファイル名が表示されるので、このファイルをを編集します。</p>
-<div class="highlight-sh"><div class="highlight"><pre>vi &lt;...&gt;/myblog/2012/09/12/hoge.rst
-</pre></div>
-</div>
-<p>編集が終わったら、 <tt class="docutils literal"><span class="pre">tinker</span> <span class="pre">-b</span></tt> でビルドします。 Sphinxの <tt class="docutils literal"><span class="pre">make</span> <span class="pre">clean</span> <span class="pre">html</span></tt> に相当します。</p>
-<div class="highlight-sh"><div class="highlight"><pre>tinker -b
-</pre></div>
-</div>
-<p>基本はこんな感じですが、この他にもビルド対象とならないドラフトファイルを作成したり、ドラフトと本記事を相互に入れたり戻したり、通常のSphinxのような、日付に紐づかない静的なページを作ったりすることが出来ます。私はこのあたりの機能が気に入っています。</p>
-<p>詳しくは公式ドキュメントのこちら <a class="footnote-reference" href="#id8" id="id7">[1]</a> を参照。</p>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[1]</a></td><td><a class="reference external" href="http://tinkerer.me/doc/tinkering.html">http://tinkerer.me/doc/tinkering.html</a></td></tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="github-pages">
-<h2>GitHub Pagesに公開する</h2>
-<p>作成したページ群をホストします。公式ドキュメントでは BitBucket にホストする方法が紹介されていますが、ここでは GitHub Pages に公開します。</p>
-<p>GitHub Pages にホストする場合、アカウントに紐づくページとして公開する方法と、プロジェクトに紐づくページとして公開する方法があります。今回は個人ブログということで、前者のアカウントに紐づくページとして公開します。</p>
-<p>アカウントに紐づくページとして公開する場合、一例として以下のような手順を踏みます。</p>
-<ol class="arabic simple">
-<li>GitHubで <tt class="docutils literal"><span class="pre">&lt;アカウント名&gt;.github.com</span></tt> というリポジトリを作成する。</li>
-<li>作成したリポジトリを <tt class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></tt> して、直下に <tt class="docutils literal"><span class="pre">.nojekyll</span></tt> ファイルを作成する。</li>
-<li>Tinkererのビルドで生成した <tt class="docutils literal"><span class="pre">myblog/blog/html</span></tt> ディレクトリ以下のファイル郡を <tt class="docutils literal"><span class="pre">master</span></tt> ブランチに <tt class="docutils literal"><span class="pre">push</span></tt> する</li>
-</ol>
-<ol class="arabic simple" start="2">
-<li>の手順が少し注意すべき点で、GitHub Pagesでは Jekyll というコンテンツ管理のシステムがデフォルトで有効になるようで、この Jekyll  がアンダースコアを含むディレクトリをうまく処理出来ないため、Sphinxがデフォルトで利用する <tt class="docutils literal"><span class="pre">_static</span></tt> や <tt class="docutils literal"><span class="pre">_template</span></tt> などのディレクトリをうまく扱えないようです。この Jekyll を無効にするために、 <tt class="docutils literal"><span class="pre">.nojekyll</span></tt> を配置する必要があります。</li>
-</ol>
-<p>以下、2.と3.の手順例です。</p>
-<div class="highlight-sh"><div class="highlight"><pre>git clone git@github.com:akirakw/akirakw.github.com.git
-<span class="nb">cd </span>akirakw.github.com
-touch .nojekyll
-rsync -av &lt;...&gt;/myblog/blog/html/ .
-git add .
-git commit -m <span class="s2">&quot;First commit of blog contents.&quot;</span>
-git push origin master
-</pre></div>
-</div>
-<p>これで完了です。最初だけはGitHub Pageの公開反映に数分かかるようです。数分後に <tt class="docutils literal"><span class="pre">http://&lt;アカウント名&gt;.github.com</span></tt> にアクセスすると、ブログページが表示できると思います。</p>
-<p>とりあえず今回はブログ公開出来たところまで。
-次回はTinkererのカスタマイズ編です。</p>
-</div>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by apirakun</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/sphinx.html">sphinx</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/sphinx.html">sphinx</a>, <a href="tags/tinkerer.html">tinkerer</a>, <a href="tags/document.html">document</a>, <a href="tags/blog.html">blog</a></span>
-        </div>
-        <div class="comments">
-            <a href="http://akirakw.github.com/2012/09/12/create_blog_with_tinkerer.html#comments"><fb:comments-count href="http://akirakw.github.com/2012/09/12/create_blog_with_tinkerer.html"></fb:comments-count> comment(s)</a>
-        </div>
-    </div><div class="archive_link">
-        <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
-    </div></article><div class="related">
+        
+    </div>
+    <div id="comments">   <div class="fb-comments" data-href="http://akirakw.github.com/2012/09/13/customize_tinkerer.html">   </div></div>
+</article><div class="related">
         <ul>
             <li class="left"></li>
-            <li class="right"><a href="page1.html">Older</a> &raquo; </li>
+            <li class="right"><a href="../12/create_blog_with_tinkerer.html">TinkererでSphinxなブログ環境を構築する</a> &raquo; </li>
         </ul>
     </div></div><aside class="sidebar"><section><div class="widget">
     <h1>Twitter</h1>
@@ -442,20 +315,20 @@ git push origin master
 </section><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
-            <a href="2012/09/13/customize_tinkerer.html">Tinkererをカスタマイズする</a>
+            <a href="#">Tinkererをカスタマイズする</a>
         </li><li>
-            <a href="2012/09/12/create_blog_with_tinkerer.html">TinkererでSphinxなブログ環境を構築する</a>
+            <a href="../12/create_blog_with_tinkerer.html">TinkererでSphinxなブログ環境を構築する</a>
         </li><li>
-            <a href="2012/09/12/remodel.html">REMODEL</a>
+            <a href="../12/remodel.html">REMODEL</a>
         </li></ul>
 </div>
 </section><section><div class="widget">
     <h1>Categories</h1>
-    <ul><li><a href="categories/misc.html">misc</a> (1)</li><li><a href="categories/sphinx.html">sphinx</a> (2)</li></ul>
+    <ul><li><a href="../../../categories/misc.html">misc</a> (1)</li><li><a href="../../../categories/sphinx.html">sphinx</a> (2)</li></ul>
 </div></section><section><div class="widget">
-    <h1>Tags</h1><a href="tags/blog.html">blog</a> (2), <a href="tags/document.html">document</a> (2), <a href="tags/sphinx.html">sphinx</a> (2), <a href="tags/tinkerer.html">tinkerer</a> (2)</div></section><section><div class="widget" id="searchbox">
+    <h1>Tags</h1><a href="../../../tags/blog.html">blog</a> (2), <a href="../../../tags/document.html">document</a> (2), <a href="../../../tags/sphinx.html">sphinx</a> (2), <a href="../../../tags/tinkerer.html">tinkerer</a> (2)</div></section><section><div class="widget" id="searchbox">
     <h1>Search</h1>
-    <form action="search.html" method="get">
+    <form action="../../../search.html" method="get">
         <input type="text" name="q" />
         <button type="submit"><span class="webfont">L</span></button>
     </form>

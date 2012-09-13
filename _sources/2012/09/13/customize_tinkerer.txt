@@ -1,0 +1,232 @@
+Tinkererをカスタマイズする
+==========================
+前回のポスト :doc:`../12/create_blog_with_tinkerer` でとりあえずSphinxなブログ環境を構築しましたが、デフォルトだとちょっと寂しい感じなので、いろいろカスタマイズしてみます。
+
+コメント機能をつける
+--------------------
+`Tinkerer`_ では内部ではコメント管理の機能を持っていないため、外部のコメント管理用サービスを利用してコメントを扱います。
+
+Tinkererのドキュメントでは、 `Disqus`_ を利用してコメント機能をつける方法と、 `Facebook Comments`_ を利用した方法が紹介されています。
+
+まず Disqus を試してみたのですが、コメントを投稿してから反映されるのがかなり遅かったり、コメントを削除してもカウンターのほうでユーザー名入りの履歴が残ってしまったりといろいろ微妙な感じでした。
+
+Facebook Comments のほうは安定しているのですが、匿名ユーザからコメントを受け付けることが出来ません。でもまあこのブログではそれでもいいかな、ということでFacebook Comments を利用することにしました。
+
+..  _`Tinkerer`: http://tinkerer.me/
+..  _`Disqus`: http://disqus.com/
+..  _`Facebook Comments`: http://developers.facebook.com/docs/reference/plugins/comments/
+
+Facebook Commentsを利用する
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Facebook Commentsを利用する [#]_ には、まず `conf.py` を編集し、extentionの設定をデフォルトの Disqus から Facebook Comments のものに置き換えます。
+
+デフォルトは以下のようになっています。
+
+..  code-block:: python
+     
+    52 # Add other Sphinx extensions here
+    53 extensions = ['tinkerer.ext.blog', 'tinkerer.ext.disqus']
+
+この ``tinkerer.ext.disqus`` を ``tinkerer.ext.fbcomments`` に置き換えます。
+
+..  code-block:: python
+     
+    52 # Add other Sphinx extensions here
+    53 extensions = ['tinkerer.ext.blog', 'tinkerer.ext.fbcomments']
+
+次にこのコメントを管理するための ``meta`` タグをページにしこむ必要があります。このため、Tinkererが提供するページのテンプレートを拡張します。
+
+まず、テンプレートの拡張ファイルを配置するディレクトリ ``_template`` を作成し、そこに ``page.html`` を作成します。
+
+..  code-block:: python
+     
+    cd <...>/myblog
+    mkdir _template
+    vi _template/page.html
+
+``page.html`` にFacebook コメント管理用の定義を追加しますが、これにはFacebookの ユーザID を使用する方法と、 アプリケーションID を利用する方法の2つがあります。ここでは後者のアプリケーションID を使う方法で進めます。FacebookのアプリケーションIDを事前に取得しておく必要があります [#]_ 。
+
+アプリケーションIDを使用する場合は、 ``page.html`` に以下の定義を追加します。
+
+..  code-block:: html
+    
+    {% extends "!page.html" %}
+    
+    {%- block extrahead %}
+        <meta property="fb:app_id" content="$(YOUR_APP_ID)"/>
+        {{ super() }}
+    {% endblock %}
+
+上記の ``$(YOUR_APP_ID)`` の部分を自分のアプリケーションIDの値に置き換えます。
+
+この状態でビルドしたコンテンツをホストにアップすると、Facebookのコメント機能が有効になります。
+
+..  [#] さらに詳しい内容は公式ドキュメントの以下を参照してください: http://tinkerer.me/doc/additional_extensions.html#facebook-comments
+..  [#] FacebookのアプリケーションIDを取得する方法は検索するとたくさん出てきます。わかりやすいのはこちら: https://www.ocnk.net/faq/index.php?action=artikel&cat=281579&id=733&artlang=ja
+
+サイドバーを拡張する
+--------------------
+デフォルトだとサイドバーが寂しいので、いろいろ増やします。
+
+組み込みのサイドバー部品を追加する
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tinkererから提供されているサイドバー部品のいくつかはデフォルトで無効になっているので、まずは設定でこれらを追加します [#]_ 。これも ``conf.py`` の設定です。
+
+以下では、 ``categories.html`` と ``tags.html`` を追加し、順番を入れ替えました。
+
+..  code-block:: python
+     
+    67 # Add templates to be rendered in sidebar here
+    68 html_sidebars = {
+    69     "**": ["recent.html", "categories.html", "tags.html", "searchbox.html"]
+    70 }
+    
+なお、このほかにも ``tags_cloud.html`` というタグクラウドを出すものも提供されているのですが、これを追加するとビルドに失敗してしまいました。時間があるときに調べるかも...。
+
+..  [#] さらに詳しい内容は公式ドキュメントの以下を参照してください: http://tinkerer.me/doc/more_tinkering.html#sidebar
+
+自作のサイドバー部品を追加する
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+自作のサイドバー部品の追加も(わかってしまえば)簡単に出来ます。
+
+ここでは、Twitterの埋め込みタイムライン [#]_ を追加してみます。
+
+まず、テンプレートの拡張ファイルを配置するディレクトリ ``_template`` を作成し [#]_ 、そこにサイドバー部品用のHTMLファイルを作成します。ここでは ``twitter.html`` を作成します。
+
+..  code-block:: python
+     
+    cd <...>/myblog
+    mkdir _template
+    vi _template/twitter.html
+
+``twitter.html`` には ``<div class="widget">`` の中にHTMLやスクリプトの定義を追加します。
+
+..  code-block:: html
+     
+    {#-
+        twitter.html
+        ~~~~~~~~~~~~
+    
+        Show Twitter Widget to Sidebar.
+    
+    -#}
+    
+    <div class="widget">
+        <h1>Twitter</h1>
+        <a class="twitter-timeline" width="250" height="500" href="https://twitter.com/apirakun" data-widget-id="$(YOUR_WIDGET_ID)">@$(YOUR_ID) からのツイート</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+
+横幅の調整に苦労しました...。Twitterのドキュメントには親のdivの定義を参照してよろしくやってくれるようなことが書かれていますが、手元ではそうでもなかったので適当な値を絶対指定しています。
+
+次に、 ``conf.py`` を編集して上記で作成したサイドバーのHTMLを使うよう設定を追加します。
+
+..  code-block:: python
+     
+    67 # Add templates to be rendered in sidebar here
+    68 html_sidebars = {
+    69     "**": ["twitter.html", "recent.html", "categories.html", "tags.html", "searchbox.html"]
+    70 }
+
+これでビルドすると、サイドバーに追加されます。
+    
+..  [#] https://dev.twitter.com/docs/embedded-timelines
+..  [#] Facebook Commentsを利用する の手順を実施済みの場合は ``_template`` は既に作ってあるはずです。
+
+ページを拡張する
+----------------
+ページ本体も少し拡張したいです。ここでは Twitter のツイートボタンを追加します。
+
+まず、テンプレートの拡張ファイルを配置するディレクトリ ``_template`` を作成し、そこに ``page.html`` を作成します。このあたりはこれまでの手順をやっていれば出来ていると思うので、もしあったらスキップしてください。
+
+..  code-block:: python
+     
+    cd <...>/myblog
+    mkdir _template
+    vi _template/page.html
+
+``page.html`` に ツイートボタン用の定義 [#]_ を追加します。
+
+..  code-block:: html
+     
+    {%- block body %}
+        {{ timestamp(metadata.date, timestamp_format) }}
+        {{ body }}
+        <br/>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        {{ post_meta(metadata) }}
+        {{ comments }}
+    {% endblock %}
+
+ページ本体を拡張する場合は、 ``{%- block body %}`` 内に定義を追加します。で、実は最初はもっとシンプルに、以下のように親テンプレートの定義にアペンドする、という定義をやってみたのですが...
+
+..  code-block:: html
+     
+    {%- block body %}
+        {{ super() }}
+        追加する定義部分...
+    {% endblock %}
+    
+
+これだと、コメント機能が有効になっている場合にはコメント欄をクリックしないとツイートボタンが見られない、という状態になってしまいました。そこで少し微妙ですが、親の定義を完全に上書きし、本文の直後にツイートボタンがくるよう設定しました。
+
+..  [#] ここから作れます: https://twitter.com/about/resources/buttons
+
+Google Analyticsを設定する
+--------------------------
+最後に、Google Analyticsを設定します [#]_ 。
+
+まず Google Analyticsのサイト [#]_ にいき、アカウントを作成します。
+
+アカウント作成後にJavaScriptのスクリプトが画面に表示されるので、スクリプト文字列をコピーしておきます。この時の注意点で、 ``<script>`` タグの部分に囲まれた文字列が出力されますが、タグ自身はコピーせず、タグの中身だけをコピーしてください。
+
+..  code-block:: javascript
+     
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34761823-1']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+``_static/google_analytics.js`` というファイルを作成して、これにコピーしたスクリプト文字列を貼り付けて保存します。
+
+..  code-block:: python
+     
+    cd <...>/myblog
+    mkdir _static
+    vi _static/google_analytics.js
+
+次に今までと同様、 ``_template/page.html`` を編集します(なければ作ります)。
+
+..  code-block:: html
+     
+    {% extends "!page.html" %}
+    
+    {% set script_files = script_files + ["_static/google_analytics.js"] %}
+
+これまでの手順のどれかを実施済みであれば ``{% extends "!page.html" %}`` はすでにあるはずなので、 ``{$ set...`` の部分だけを追加します。
+
+この状態でビルドしたコンテンツをホストにアップすると、Google Analyticsが有効になります。手元ではリアルタイム検索で数秒で情報が反映されていました。
+
+動作していないと思ったら、JavaScriptがうまく設定できていないか疑ってみてください。コピペミスでJavaScriptエラーなどが出ているかもしれません（私はそれで少しはまりました）。
+
+..  [#] さらに詳しくは公式ドキュメントの以下を参照してください: http://tinkerer.me/doc/more_tinkering.html#enabling-google-analytics
+..  [#] http://google.com/analytics
+
+今後は...
+---------
+とりあえず基本的なカスタマイズ方法を通してみました。
+
+あとはCSSもカスタマイズしたいなーと思っていますが、その辺りは結構疎いので、はたしてやるかどうか...。
+
+.. author:: default
+.. categories:: sphinx
+.. tags:: sphinx,tinkerer,document,blog
+.. comments::
+
+
