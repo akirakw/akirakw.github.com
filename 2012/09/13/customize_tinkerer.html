@@ -1,24 +1,37 @@
-<!doctype html><!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Tinkererをカスタマイズする &mdash; An Artisan&#39;s Build Act</title><!-- Mobile viewport optimized: j.mp/bplateviewport -->
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="../../../_static/style.css" type="text/css">
-  <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css"><link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
-  <script src="../../../_static/modernizr-2.0.6.min.js"></script>
-  <!-- Grab Google CDN's jQuery, fall back to local if offline -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="../../../_static/jquery-1.6.2.min.js"><\/script>')</script><link rel="top" title="An Artisan&#39;s Build Act" href="../../../index.html" /><link rel="next" title="TinkererでSphinxなブログ環境を構築する" href="../12/create_blog_with_tinkerer.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="My blog">
+        <meta name="viewport" content="width=device-width">
+        <title>Tinkererをカスタマイズする &mdash; An Artisan&#39;s Build Act</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="TinkererでSphinxなブログ環境を構築する" href="../12/create_blog_with_tinkerer.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.4.1b',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,45 +43,45 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // Adjusts document height if sidebar is taller
-            var documentwrapper = document.getElementsByClassName("documentwrapper")[0];
+            var documentwrapper = document.getElementsByTagName("article")[0];
             var sidebar = document.getElementsByClassName("sidebar")[0];
 
             if (sidebar.offsetHeight > documentwrapper.offsetHeight)
             {
-                documentwrapper.style.minHeight = sidebar.offsetHeight + "px";
+                var mainwrapper = document.getElementsByClassName("main")[0];
+                documentwrapper.style.minHeight = mainwrapper.offsetHeight + "px";
             }
 
             // Scroll to content if on small screen
             if (screen.width < 480)
             {
-                $(document).scrollTop(document.getElementsByClassName("document")[0].offsetTop - 44);
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
             }
         });
     </script>
 </head>
-<body>
-  <div id="container"><header>
-      <hgroup>
-        <h1><a href="../../../index.html">An Artisan&#39;s Build Act</a></h1>
-        <h2>とあるビルド職人の、チクチク作業した軌跡</h2>
-      </hgroup>
-    </header>
-<nav class="clearfix">
-      <ul class="main-navigation"><li class="quicklink"><div class="rss">
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header>
+            <hgroup>
+              <h1><a href="../../../index.html">An Artisan&#39;s Build Act</a></h1></hgroup>
+          </header>
+      <nav>
+            <ul><li class="quicklink"><div class="rss">
         <a href="../../../rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
     </div></li><li class="main-nav">
-          <a href="../../../index.html">Home</a>
-        </li>
-        </ul>
-    </nav><div class="main"><div class="content clearfix"><div class="documentwrapper"><div class="related">
-        <ul>
+                  <a href="../../../index.html">ホーム</a>
+                </li>
+              </ul>
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
             <li class="left"></li>
             <li class="right"><a href="../12/create_blog_with_tinkerer.html">TinkererでSphinxなブログ環境を構築する</a> &raquo; </li>
         </ul>
-    </div><article class="document">
-              
     <div class="timestamp postmeta">
-            <span>September 13, 2012</span> 
+            <span>2012-09-13 00:00:00</span>
         </div>
     <div class="section" id="tinkerer">
 <h1>Tinkererをカスタマイズする</h1>
@@ -87,20 +100,20 @@
 <span class="mi">53</span> <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;tinkerer.ext.blog&#39;</span><span class="p">,</span> <span class="s">&#39;tinkerer.ext.disqus&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>この <tt class="docutils literal"><span class="pre">tinkerer.ext.disqus</span></tt> を <tt class="docutils literal"><span class="pre">tinkerer.ext.fbcomments</span></tt> に置き換えます。</p>
+<p>この <span class="docutils literal"><span class="pre">tinkerer.ext.disqus</span></span> を <span class="docutils literal"><span class="pre">tinkerer.ext.fbcomments</span></span> に置き換えます。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="mi">52</span> <span class="c"># Add other Sphinx extensions here</span>
 <span class="mi">53</span> <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;tinkerer.ext.blog&#39;</span><span class="p">,</span> <span class="s">&#39;tinkerer.ext.fbcomments&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>次にこのコメントを管理するための <tt class="docutils literal"><span class="pre">meta</span></tt> タグをページにしこむ必要があります。このため、Tinkererが提供するページのテンプレートを拡張します。</p>
-<p>まず、テンプレートの拡張ファイルを配置するディレクトリ <tt class="docutils literal"><span class="pre">_template</span></tt> を作成し、そこに <tt class="docutils literal"><span class="pre">page.html</span></tt> を作成します。</p>
+<p>次にこのコメントを管理するための <span class="docutils literal"><span class="pre">meta</span></span> タグをページにしこむ必要があります。このため、Tinkererが提供するページのテンプレートを拡張します。</p>
+<p>まず、テンプレートの拡張ファイルを配置するディレクトリ <span class="docutils literal"><span class="pre">_template</span></span> を作成し、そこに <span class="docutils literal"><span class="pre">page.html</span></span> を作成します。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">cd</span> <span class="o">&lt;...&gt;/</span><span class="n">myblog</span>
 <span class="n">mkdir</span> <span class="n">_template</span>
 <span class="n">vi</span> <span class="n">_template</span><span class="o">/</span><span class="n">page</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">page.html</span></tt> にFacebook コメント管理用の定義を追加しますが、これにはFacebookの ユーザID を使用する方法と、 アプリケーションID を利用する方法の2つがあります。ここでは後者のアプリケーションID を使う方法で進めます。FacebookのアプリケーションIDを事前に取得しておく必要があります <a class="footnote-reference" href="#id7" id="id5">[2]</a> 。</p>
-<p>アプリケーションIDを使用する場合は、 <tt class="docutils literal"><span class="pre">page.html</span></tt> に以下の定義を追加します。</p>
+<p><span class="docutils literal"><span class="pre">page.html</span></span> にFacebook コメント管理用の定義を追加しますが、これにはFacebookの ユーザID を使用する方法と、 アプリケーションID を利用する方法の2つがあります。ここでは後者のアプリケーションID を使う方法で進めます。FacebookのアプリケーションIDを事前に取得しておく必要があります <a class="footnote-reference" href="#id7" id="id5">[2]</a> 。</p>
+<p>アプリケーションIDを使用する場合は、 <span class="docutils literal"><span class="pre">page.html</span></span> に以下の定義を追加します。</p>
 <div class="highlight-html"><div class="highlight"><pre>{% extends &quot;!page.html&quot; %}
 
 {%- block extrahead %}
@@ -109,7 +122,7 @@
 {% endblock %}
 </pre></div>
 </div>
-<p>上記の <tt class="docutils literal"><span class="pre">$(YOUR_APP_ID)</span></tt> の部分を自分のアプリケーションIDの値に置き換えます。</p>
+<p>上記の <span class="docutils literal"><span class="pre">$(YOUR_APP_ID)</span></span> の部分を自分のアプリケーションIDの値に置き換えます。</p>
 <p>この状態でビルドしたコンテンツをホストにアップすると、Facebookのコメント機能が有効になります。</p>
 <table class="docutils footnote" frame="void" id="id6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -130,15 +143,15 @@
 <p>デフォルトだとサイドバーが寂しいので、いろいろ増やします。</p>
 <div class="section" id="id9">
 <h3>組み込みのサイドバー部品を追加する</h3>
-<p>Tinkererから提供されているサイドバー部品のいくつかはデフォルトで無効になっているので、まずは設定でこれらを追加します <a class="footnote-reference" href="#id11" id="id10">[3]</a> 。これも <tt class="docutils literal"><span class="pre">conf.py</span></tt> の設定です。</p>
-<p>以下では、 <tt class="docutils literal"><span class="pre">categories.html</span></tt> と <tt class="docutils literal"><span class="pre">tags.html</span></tt> を追加し、順番を入れ替えました。</p>
+<p>Tinkererから提供されているサイドバー部品のいくつかはデフォルトで無効になっているので、まずは設定でこれらを追加します <a class="footnote-reference" href="#id11" id="id10">[3]</a> 。これも <span class="docutils literal"><span class="pre">conf.py</span></span> の設定です。</p>
+<p>以下では、 <span class="docutils literal"><span class="pre">categories.html</span></span> と <span class="docutils literal"><span class="pre">tags.html</span></span> を追加し、順番を入れ替えました。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="mi">67</span> <span class="c"># Add templates to be rendered in sidebar here</span>
 <span class="mi">68</span> <span class="n">html_sidebars</span> <span class="o">=</span> <span class="p">{</span>
 <span class="mi">69</span>     <span class="s">&quot;**&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;recent.html&quot;</span><span class="p">,</span> <span class="s">&quot;categories.html&quot;</span><span class="p">,</span> <span class="s">&quot;tags.html&quot;</span><span class="p">,</span> <span class="s">&quot;searchbox.html&quot;</span><span class="p">]</span>
 <span class="mi">70</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>なお、このほかにも <tt class="docutils literal"><span class="pre">tags_cloud.html</span></tt> というタグクラウドを出すものも提供されているのですが、これを追加するとビルドに失敗してしまいました。時間があるときに調べるかも...。</p>
+<p>なお、このほかにも <span class="docutils literal"><span class="pre">tags_cloud.html</span></span> というタグクラウドを出すものも提供されているのですが、これを追加するとビルドに失敗してしまいました。時間があるときに調べるかも...。</p>
 <table class="docutils footnote" frame="void" id="id11" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -150,13 +163,13 @@
 <h3>自作のサイドバー部品を追加する</h3>
 <p>自作のサイドバー部品の追加も(わかってしまえば)簡単に出来ます。</p>
 <p>ここでは、Twitterの埋め込みタイムライン <a class="footnote-reference" href="#id15" id="id13">[4]</a> を追加してみます。</p>
-<p>まず、テンプレートの拡張ファイルを配置するディレクトリ <tt class="docutils literal"><span class="pre">_template</span></tt> を作成し <a class="footnote-reference" href="#id16" id="id14">[5]</a> 、そこにサイドバー部品用のHTMLファイルを作成します。ここでは <tt class="docutils literal"><span class="pre">twitter.html</span></tt> を作成します。</p>
+<p>まず、テンプレートの拡張ファイルを配置するディレクトリ <span class="docutils literal"><span class="pre">_template</span></span> を作成し <a class="footnote-reference" href="#id16" id="id14">[5]</a> 、そこにサイドバー部品用のHTMLファイルを作成します。ここでは <span class="docutils literal"><span class="pre">twitter.html</span></span> を作成します。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">cd</span> <span class="o">&lt;...&gt;/</span><span class="n">myblog</span>
 <span class="n">mkdir</span> <span class="n">_template</span>
 <span class="n">vi</span> <span class="n">_template</span><span class="o">/</span><span class="n">twitter</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">twitter.html</span></tt> には <tt class="docutils literal"><span class="pre">&lt;div</span> <span class="pre">class=&quot;widget&quot;&gt;</span></tt> の中にHTMLやスクリプトの定義を追加します。</p>
+<p><span class="docutils literal"><span class="pre">twitter.html</span></span> には <span class="docutils literal"><span class="pre">&lt;div</span> <span class="pre">class=&quot;widget&quot;&gt;</span></span> の中にHTMLやスクリプトの定義を追加します。</p>
 <div class="highlight-html"><div class="highlight"><pre>{#-
     twitter.html
     ~~~~~~~~~~~~
@@ -173,7 +186,7 @@
 </pre></div>
 </div>
 <p>横幅の調整に苦労しました...。Twitterのドキュメントには親のdivの定義を参照してよろしくやってくれるようなことが書かれていますが、手元ではそうでもなかったので適当な値を絶対指定しています。</p>
-<p>次に、 <tt class="docutils literal"><span class="pre">conf.py</span></tt> を編集して上記で作成したサイドバーのHTMLを使うよう設定を追加します。</p>
+<p>次に、 <span class="docutils literal"><span class="pre">conf.py</span></span> を編集して上記で作成したサイドバーのHTMLを使うよう設定を追加します。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="mi">67</span> <span class="c"># Add templates to be rendered in sidebar here</span>
 <span class="mi">68</span> <span class="n">html_sidebars</span> <span class="o">=</span> <span class="p">{</span>
 <span class="mi">69</span>     <span class="s">&quot;**&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;twitter.html&quot;</span><span class="p">,</span> <span class="s">&quot;recent.html&quot;</span><span class="p">,</span> <span class="s">&quot;categories.html&quot;</span><span class="p">,</span> <span class="s">&quot;tags.html&quot;</span><span class="p">,</span> <span class="s">&quot;searchbox.html&quot;</span><span class="p">]</span>
@@ -190,7 +203,7 @@
 <table class="docutils footnote" frame="void" id="id16" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id14">[5]</a></td><td>Facebook Commentsを利用する の手順を実施済みの場合は <tt class="docutils literal"><span class="pre">_template</span></tt> は既に作ってあるはずです。</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id14">[5]</a></td><td>Facebook Commentsを利用する の手順を実施済みの場合は <span class="docutils literal"><span class="pre">_template</span></span> は既に作ってあるはずです。</td></tr>
 </tbody>
 </table>
 </div>
@@ -198,13 +211,13 @@
 <div class="section" id="id17">
 <h2>ページを拡張する</h2>
 <p>ページ本体も少し拡張したいです。ここでは Twitter のツイートボタンを追加します。</p>
-<p>まず、テンプレートの拡張ファイルを配置するディレクトリ <tt class="docutils literal"><span class="pre">_template</span></tt> を作成し、そこに <tt class="docutils literal"><span class="pre">page.html</span></tt> を作成します。このあたりはこれまでの手順をやっていれば出来ていると思うので、もしあったらスキップしてください。</p>
+<p>まず、テンプレートの拡張ファイルを配置するディレクトリ <span class="docutils literal"><span class="pre">_template</span></span> を作成し、そこに <span class="docutils literal"><span class="pre">page.html</span></span> を作成します。このあたりはこれまでの手順をやっていれば出来ていると思うので、もしあったらスキップしてください。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">cd</span> <span class="o">&lt;...&gt;/</span><span class="n">myblog</span>
 <span class="n">mkdir</span> <span class="n">_template</span>
 <span class="n">vi</span> <span class="n">_template</span><span class="o">/</span><span class="n">page</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">page.html</span></tt> に ツイートボタン用の定義 <a class="footnote-reference" href="#id19" id="id18">[6]</a> を追加します。</p>
+<p><span class="docutils literal"><span class="pre">page.html</span></span> に ツイートボタン用の定義 <a class="footnote-reference" href="#id19" id="id18">[6]</a> を追加します。</p>
 <div class="highlight-html"><div class="highlight"><pre>{%- block body %}
     {{ timestamp(metadata.date, timestamp_format) }}
     {{ body }}
@@ -216,7 +229,7 @@
 {% endblock %}
 </pre></div>
 </div>
-<p>ページ本体を拡張する場合は、 <tt class="docutils literal"><span class="pre">{%-</span> <span class="pre">block</span> <span class="pre">body</span> <span class="pre">%}</span></tt> 内に定義を追加します。で、実は最初はもっとシンプルに、以下のように親テンプレートの定義にアペンドする、という定義をやってみたのですが...</p>
+<p>ページ本体を拡張する場合は、 <span class="docutils literal"><span class="pre">{%-</span> <span class="pre">block</span> <span class="pre">body</span> <span class="pre">%}</span></span> 内に定義を追加します。で、実は最初はもっとシンプルに、以下のように親テンプレートの定義にアペンドする、という定義をやってみたのですが...</p>
 <div class="highlight-html"><div class="highlight"><pre>{%- block body %}
     {{ super() }}
     追加する定義部分...
@@ -236,7 +249,7 @@
 <h2>Google Analyticsを設定する</h2>
 <p>最後に、Google Analyticsを設定します <a class="footnote-reference" href="#id22" id="id20">[7]</a> 。</p>
 <p>まず Google Analyticsのサイト <a class="footnote-reference" href="#id23" id="id21">[8]</a> にいき、アカウントを作成します。</p>
-<p>アカウント作成後にJavaScriptのスクリプトが画面に表示されるので、スクリプト文字列をコピーしておきます。この時の注意点で、 <tt class="docutils literal"><span class="pre">&lt;script&gt;</span></tt> タグの部分に囲まれた文字列が出力されますが、タグ自身はコピーせず、タグの中身だけをコピーしてください。</p>
+<p>アカウント作成後にJavaScriptのスクリプトが画面に表示されるので、スクリプト文字列をコピーしておきます。この時の注意点で、 <span class="docutils literal"><span class="pre">&lt;script&gt;</span></span> タグの部分に囲まれた文字列が出力されますが、タグ自身はコピーせず、タグの中身だけをコピーしてください。</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">_gaq</span> <span class="o">=</span> <span class="nx">_gaq</span> <span class="o">||</span> <span class="p">[];</span>
 <span class="nx">_gaq</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="s1">&#39;_setAccount&#39;</span><span class="p">,</span> <span class="s1">&#39;UA-34761823-1&#39;</span><span class="p">]);</span>
 <span class="nx">_gaq</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="s1">&#39;_trackPageview&#39;</span><span class="p">]);</span>
@@ -248,19 +261,19 @@
 <span class="p">})();</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">_static/google_analytics.js</span></tt> というファイルを作成して、これにコピーしたスクリプト文字列を貼り付けて保存します。</p>
+<p><span class="docutils literal"><span class="pre">_static/google_analytics.js</span></span> というファイルを作成して、これにコピーしたスクリプト文字列を貼り付けて保存します。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">cd</span> <span class="o">&lt;...&gt;/</span><span class="n">myblog</span>
 <span class="n">mkdir</span> <span class="n">_static</span>
 <span class="n">vi</span> <span class="n">_static</span><span class="o">/</span><span class="n">google_analytics</span><span class="o">.</span><span class="n">js</span>
 </pre></div>
 </div>
-<p>次に今までと同様、 <tt class="docutils literal"><span class="pre">_template/page.html</span></tt> を編集します(なければ作ります)。</p>
+<p>次に今までと同様、 <span class="docutils literal"><span class="pre">_template/page.html</span></span> を編集します(なければ作ります)。</p>
 <div class="highlight-html"><div class="highlight"><pre>{% extends &quot;!page.html&quot; %}
 
 {% set script_files = script_files + [&quot;_static/google_analytics.js&quot;] %}
 </pre></div>
 </div>
-<p>これまでの手順のどれかを実施済みであれば <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">extends</span> <span class="pre">&quot;!page.html&quot;</span> <span class="pre">%}</span></tt> はすでにあるはずなので、 <tt class="docutils literal"><span class="pre">{$</span> <span class="pre">set...</span></tt> の部分だけを追加します。</p>
+<p>これまでの手順のどれかを実施済みであれば <span class="docutils literal"><span class="pre">{%</span> <span class="pre">extends</span> <span class="pre">&quot;!page.html&quot;</span> <span class="pre">%}</span></span> はすでにあるはずなので、 <span class="docutils literal"><span class="pre">{$</span> <span class="pre">set...</span></span> の部分だけを追加します。</p>
 <p>この状態でビルドしたコンテンツをホストにアップすると、Google Analyticsが有効になります。手元ではリアルタイム検索で数秒で情報が反映されていました。</p>
 <p>動作していないと思ったら、JavaScriptがうまく設定できていないか疑ってみてください。コピペミスでJavaScriptエラーなどが出ているかもしれません（私はそれで少しはまりました）。</p>
 <table class="docutils footnote" frame="void" id="id22" rules="none">
@@ -288,33 +301,30 @@
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     <div class="postmeta">
         <div class="author">
-            <span>Posted by apirakun</span>
+            <span>投稿者 apirakun</span>
         </div>
         <div class="categories">
             <span>
-                Filed under:
+                カテゴリー:
                 <a href="../../../categories/sphinx.html">sphinx</a></span>
         </div>
         <div class="tags">
             <span>
-                Tags:
+                タグ:
                 <a href="../../../tags/sphinx.html">sphinx</a>, <a href="../../../tags/tinkerer.html">tinkerer</a>, <a href="../../../tags/document.html">document</a>, <a href="../../../tags/blog.html">blog</a></span>
         </div>
-        
-    </div>
-    <div id="comments">   <div class="fb-comments" data-href="http://akirakw.github.com/2012/09/13/customize_tinkerer.html">   </div></div>
-</article><div class="related">
-        <ul>
+        </div>
+    <div id="comments">   <div class="fb-comments" data-href="http://akirakw.github.io/2012/09/13/customize_tinkerer.html">   </div></div>
+<ul class="related clearfix">
             <li class="left"></li>
             <li class="right"><a href="../12/create_blog_with_tinkerer.html">TinkererでSphinxなブログ環境を構築する</a> &raquo; </li>
-        </ul>
-    </div></div><aside class="sidebar"><section><div class="widget">
+        </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Twitter</h1>
     <a class="twitter-timeline" width="250" height="500" href="https://twitter.com/apirakun" data-widget-id="245795643619151872">@apirakun からのツイート</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
 </section><section><div class="widget">
-    <h1>Recent Posts</h1>
+    <h1>最近の投稿</h1>
     <ul><li>
             <a href="#">Tinkererをカスタマイズする</a>
         </li><li>
@@ -324,18 +334,22 @@
         </li></ul>
 </div>
 </section><section><div class="widget">
-    <h1>Categories</h1>
+    <h1>カテゴリー</h1>
     <ul><li><a href="../../../categories/misc.html">misc</a> (1)</li><li><a href="../../../categories/sphinx.html">sphinx</a> (2)</li></ul>
 </div></section><section><div class="widget">
-    <h1>Tags</h1><a href="../../../tags/blog.html">blog</a> (2), <a href="../../../tags/document.html">document</a> (2), <a href="../../../tags/sphinx.html">sphinx</a> (2), <a href="../../../tags/tinkerer.html">tinkerer</a> (2)</div></section><section><div class="widget" id="searchbox">
+    <h1>タグ</h1><a href="../../../tags/blog.html">blog</a> (2), <a href="../../../tags/document.html">document</a> (2), <a href="../../../tags/sphinx.html">sphinx</a> (2), <a href="../../../tags/tinkerer.html">tinkerer</a> (2)</div></section><section><div class="widget" id="searchbox">
     <h1>Search</h1>
     <form action="../../../search.html" method="get">
         <input type="text" name="q" />
         <button type="submit"><span class="webfont">L</span></button>
     </form>
-</div></section></aside></div></div><footer>&copy; Copyright 2012, apirakun. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!--! end of #container --><!--[if lt IE 7 ]>
-    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-  <![endif]-->
-</body>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2012-2013, apirakun. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
 </html>

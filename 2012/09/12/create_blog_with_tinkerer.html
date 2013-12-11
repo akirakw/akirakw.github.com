@@ -1,24 +1,37 @@
-<!doctype html><!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>TinkererでSphinxなブログ環境を構築する &mdash; An Artisan&#39;s Build Act</title><!-- Mobile viewport optimized: j.mp/bplateviewport -->
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="../../../_static/style.css" type="text/css">
-  <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css"><link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
-  <script src="../../../_static/modernizr-2.0.6.min.js"></script>
-  <!-- Grab Google CDN's jQuery, fall back to local if offline -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="../../../_static/jquery-1.6.2.min.js"><\/script>')</script><link rel="top" title="An Artisan&#39;s Build Act" href="../../../index.html" /><link rel="next" title="REMODEL" href="remodel.html" /><link rel="prev" title="Tinkererをカスタマイズする" href="../13/customize_tinkerer.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="My blog">
+        <meta name="viewport" content="width=device-width">
+        <title>TinkererでSphinxなブログ環境を構築する &mdash; An Artisan&#39;s Build Act</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="REMODEL" href="remodel.html" /><link rel="prev" title="Tinkererをカスタマイズする" href="../13/customize_tinkerer.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.4.1b',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,45 +43,45 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // Adjusts document height if sidebar is taller
-            var documentwrapper = document.getElementsByClassName("documentwrapper")[0];
+            var documentwrapper = document.getElementsByTagName("article")[0];
             var sidebar = document.getElementsByClassName("sidebar")[0];
 
             if (sidebar.offsetHeight > documentwrapper.offsetHeight)
             {
-                documentwrapper.style.minHeight = sidebar.offsetHeight + "px";
+                var mainwrapper = document.getElementsByClassName("main")[0];
+                documentwrapper.style.minHeight = mainwrapper.offsetHeight + "px";
             }
 
             // Scroll to content if on small screen
             if (screen.width < 480)
             {
-                $(document).scrollTop(document.getElementsByClassName("document")[0].offsetTop - 44);
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
             }
         });
     </script>
 </head>
-<body>
-  <div id="container"><header>
-      <hgroup>
-        <h1><a href="../../../index.html">An Artisan&#39;s Build Act</a></h1>
-        <h2>とあるビルド職人の、チクチク作業した軌跡</h2>
-      </hgroup>
-    </header>
-<nav class="clearfix">
-      <ul class="main-navigation"><li class="quicklink"><div class="rss">
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header>
+            <hgroup>
+              <h1><a href="../../../index.html">An Artisan&#39;s Build Act</a></h1></hgroup>
+          </header>
+      <nav>
+            <ul><li class="quicklink"><div class="rss">
         <a href="../../../rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
     </div></li><li class="main-nav">
-          <a href="../../../index.html">Home</a>
-        </li>
-        </ul>
-    </nav><div class="main"><div class="content clearfix"><div class="documentwrapper"><div class="related">
-        <ul>
+                  <a href="../../../index.html">ホーム</a>
+                </li>
+              </ul>
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
             <li class="left"> &laquo; <a href="../13/customize_tinkerer.html">Tinkererをカスタマイズする</a></li>
             <li class="right"><a href="remodel.html">REMODEL</a> &raquo; </li>
         </ul>
-    </div><article class="document">
-              
     <div class="timestamp postmeta">
-            <span>September 12, 2012</span> 
+            <span>2012-09-12 00:00:00</span>
         </div>
     <div class="section" id="tinkerersphinx">
 <h1>TinkererでSphinxなブログ環境を構築する</h1>
@@ -94,19 +107,19 @@
 Unicode errorが発生していまい、ビルドが出来ないようです。以下のissueが上がっています。</p>
 <p><a class="reference external" href="https://bitbucket.org/vladris/tinkerer/issue/47/a-unicode-error-occurred-when-lc_all-is">https://bitbucket.org/vladris/tinkerer/issue/47/a-unicode-error-occurred-when-lc_all-is</a></p>
 <p>上記ページに貼ってあるパッチを適用すると、この問題が解消されました。
-手元の環境では <tt class="docutils literal"><span class="pre">/usr/local/lib/python2.7/dist-packages/Tinkerer-0.4.1b-py2.7.egg/tinkerer/cmdline.py</span></tt> を編集し、
-パッチの内容を適用( <tt class="docutils literal"><span class="pre">import</span> <span class="pre">locale</span></tt> と <tt class="docutils literal"><span class="pre">locale.setlocale(...</span></tt> の行を削除) しました。</p>
+手元の環境では <span class="docutils literal"><span class="pre">/usr/local/lib/python2.7/dist-packages/Tinkerer-0.4.1b-py2.7.egg/tinkerer/cmdline.py</span></span> を編集し、
+パッチの内容を適用( <span class="docutils literal"><span class="pre">import</span> <span class="pre">locale</span></span> と <span class="docutils literal"><span class="pre">locale.setlocale(...</span></span> の行を削除) しました。</p>
 </div>
 </div>
 <div class="section" id="id5">
 <h2>セットアップ</h2>
-<p>まず <tt class="docutils literal"><span class="pre">tinkerer</span></tt> コマンドを使ってブログ作業用のディレクトリを作成します。</p>
+<p>まず <span class="docutils literal"><span class="pre">tinkerer</span></span> コマンドを使ってブログ作業用のディレクトリを作成します。</p>
 <div class="highlight-sh"><div class="highlight"><pre>mkdir myblog
 <span class="nb">cd </span>myblog
 tinker --setup
 </pre></div>
 </div>
-<p>カレントディレクトリにいろいろファイルが作成されます。このうち <tt class="docutils literal"><span class="pre">conf.py</span></tt> を編集してブログタイトルやAuthorなどの初期設定を行います。</p>
+<p>カレントディレクトリにいろいろファイルが作成されます。このうち <span class="docutils literal"><span class="pre">conf.py</span></span> を編集してブログタイトルやAuthorなどの初期設定を行います。</p>
 <div class="highlight-python"><div class="highlight"><pre> <span class="mi">6</span> <span class="c"># **************************************************************</span>
  <span class="mi">7</span> <span class="c"># TODO: Edit the lines below</span>
  <span class="mi">8</span> <span class="c"># **************************************************************</span>
@@ -130,7 +143,7 @@ tinker --setup
 </div>
 <div class="section" id="id6">
 <h2>記事を作る</h2>
-<p>記事を作成するには、 <tt class="docutils literal"><span class="pre">tinker</span> <span class="pre">-p</span> <span class="pre">'&lt;ページ名&gt;'</span></tt> です。</p>
+<p>記事を作成するには、 <span class="docutils literal"><span class="pre">tinker</span> <span class="pre">-p</span> <span class="pre">'&lt;ページ名&gt;'</span></span> です。</p>
 <div class="highlight-sh"><div class="highlight"><pre>tinker -p <span class="s1">&#39;hoge&#39;</span>
 New post created as <span class="s1">&#39;&lt;...&gt;/myblog/2012/09/12/hoge.rst&#39;</span>
 </pre></div>
@@ -139,7 +152,7 @@ New post created as <span class="s1">&#39;&lt;...&gt;/myblog/2012/09/12/hoge.rst
 <div class="highlight-sh"><div class="highlight"><pre>vi &lt;...&gt;/myblog/2012/09/12/hoge.rst
 </pre></div>
 </div>
-<p>編集が終わったら、 <tt class="docutils literal"><span class="pre">tinker</span> <span class="pre">-b</span></tt> でビルドします。 Sphinxの <tt class="docutils literal"><span class="pre">make</span> <span class="pre">clean</span> <span class="pre">html</span></tt> に相当します。</p>
+<p>編集が終わったら、 <span class="docutils literal"><span class="pre">tinker</span> <span class="pre">-b</span></span> でビルドします。 Sphinxの <span class="docutils literal"><span class="pre">make</span> <span class="pre">clean</span> <span class="pre">html</span></span> に相当します。</p>
 <div class="highlight-sh"><div class="highlight"><pre>tinker -b
 </pre></div>
 </div>
@@ -158,12 +171,12 @@ New post created as <span class="s1">&#39;&lt;...&gt;/myblog/2012/09/12/hoge.rst
 <p>GitHub Pages にホストする場合、アカウントに紐づくページとして公開する方法と、プロジェクトに紐づくページとして公開する方法があります。今回は個人ブログということで、前者のアカウントに紐づくページとして公開します。</p>
 <p>アカウントに紐づくページとして公開する場合、一例として以下のような手順を踏みます。</p>
 <ol class="arabic simple">
-<li>GitHubで <tt class="docutils literal"><span class="pre">&lt;アカウント名&gt;.github.com</span></tt> というリポジトリを作成する。</li>
-<li>作成したリポジトリを <tt class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></tt> して、直下に <tt class="docutils literal"><span class="pre">.nojekyll</span></tt> ファイルを作成する。</li>
-<li>Tinkererのビルドで生成した <tt class="docutils literal"><span class="pre">myblog/blog/html</span></tt> ディレクトリ以下のファイル郡を <tt class="docutils literal"><span class="pre">master</span></tt> ブランチに <tt class="docutils literal"><span class="pre">push</span></tt> する</li>
+<li>GitHubで <span class="docutils literal"><span class="pre">&lt;アカウント名&gt;.github.com</span></span> というリポジトリを作成する。</li>
+<li>作成したリポジトリを <span class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></span> して、直下に <span class="docutils literal"><span class="pre">.nojekyll</span></span> ファイルを作成する。</li>
+<li>Tinkererのビルドで生成した <span class="docutils literal"><span class="pre">myblog/blog/html</span></span> ディレクトリ以下のファイル郡を <span class="docutils literal"><span class="pre">master</span></span> ブランチに <span class="docutils literal"><span class="pre">push</span></span> する</li>
 </ol>
 <ol class="arabic simple" start="2">
-<li>の手順が少し注意すべき点で、GitHub Pagesでは Jekyll というコンテンツ管理のシステムがデフォルトで有効になるようで、この Jekyll  がアンダースコアを含むディレクトリをうまく処理出来ないため、Sphinxがデフォルトで利用する <tt class="docutils literal"><span class="pre">_static</span></tt> や <tt class="docutils literal"><span class="pre">_template</span></tt> などのディレクトリをうまく扱えないようです。この Jekyll を無効にするために、 <tt class="docutils literal"><span class="pre">.nojekyll</span></tt> を配置する必要があります。</li>
+<li>の手順が少し注意すべき点で、GitHub Pagesでは Jekyll というコンテンツ管理のシステムがデフォルトで有効になるようで、この Jekyll  がアンダースコアを含むディレクトリをうまく処理出来ないため、Sphinxがデフォルトで利用する <span class="docutils literal"><span class="pre">_static</span></span> や <span class="docutils literal"><span class="pre">_template</span></span> などのディレクトリをうまく扱えないようです。この Jekyll を無効にするために、 <span class="docutils literal"><span class="pre">.nojekyll</span></span> を配置する必要があります。</li>
 </ol>
 <p>以下、2.と3.の手順例です。</p>
 <div class="highlight-sh"><div class="highlight"><pre>git clone git@github.com:akirakw/akirakw.github.com.git
@@ -175,7 +188,7 @@ git commit -m <span class="s2">&quot;First commit of blog contents.&quot;</span>
 git push origin master
 </pre></div>
 </div>
-<p>これで完了です。最初だけはGitHub Pageの公開反映に数分かかるようです。数分後に <tt class="docutils literal"><span class="pre">http://&lt;アカウント名&gt;.github.com</span></tt> にアクセスすると、ブログページが表示できると思います。</p>
+<p>これで完了です。最初だけはGitHub Pageの公開反映に数分かかるようです。数分後に <span class="docutils literal"><span class="pre">http://&lt;アカウント名&gt;.github.com</span></span> にアクセスすると、ブログページが表示できると思います。</p>
 <p>とりあえず今回はブログ公開出来たところまで。
 次回はTinkererのカスタマイズ編です。</p>
 </div>
@@ -186,33 +199,30 @@ git push origin master
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     <div class="postmeta">
         <div class="author">
-            <span>Posted by apirakun</span>
+            <span>投稿者 apirakun</span>
         </div>
         <div class="categories">
             <span>
-                Filed under:
+                カテゴリー:
                 <a href="../../../categories/sphinx.html">sphinx</a></span>
         </div>
         <div class="tags">
             <span>
-                Tags:
+                タグ:
                 <a href="../../../tags/sphinx.html">sphinx</a>, <a href="../../../tags/tinkerer.html">tinkerer</a>, <a href="../../../tags/document.html">document</a>, <a href="../../../tags/blog.html">blog</a></span>
         </div>
-        
-    </div>
-    <div id="comments">   <div class="fb-comments" data-href="http://akirakw.github.com/2012/09/12/create_blog_with_tinkerer.html">   </div></div>
-</article><div class="related">
-        <ul>
+        </div>
+    <div id="comments">   <div class="fb-comments" data-href="http://akirakw.github.io/2012/09/12/create_blog_with_tinkerer.html">   </div></div>
+<ul class="related clearfix">
             <li class="left"> &laquo; <a href="../13/customize_tinkerer.html">Tinkererをカスタマイズする</a></li>
             <li class="right"><a href="remodel.html">REMODEL</a> &raquo; </li>
-        </ul>
-    </div></div><aside class="sidebar"><section><div class="widget">
+        </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Twitter</h1>
     <a class="twitter-timeline" width="250" height="500" href="https://twitter.com/apirakun" data-widget-id="245795643619151872">@apirakun からのツイート</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
 </section><section><div class="widget">
-    <h1>Recent Posts</h1>
+    <h1>最近の投稿</h1>
     <ul><li>
             <a href="../13/customize_tinkerer.html">Tinkererをカスタマイズする</a>
         </li><li>
@@ -222,18 +232,22 @@ git push origin master
         </li></ul>
 </div>
 </section><section><div class="widget">
-    <h1>Categories</h1>
+    <h1>カテゴリー</h1>
     <ul><li><a href="../../../categories/misc.html">misc</a> (1)</li><li><a href="../../../categories/sphinx.html">sphinx</a> (2)</li></ul>
 </div></section><section><div class="widget">
-    <h1>Tags</h1><a href="../../../tags/blog.html">blog</a> (2), <a href="../../../tags/document.html">document</a> (2), <a href="../../../tags/sphinx.html">sphinx</a> (2), <a href="../../../tags/tinkerer.html">tinkerer</a> (2)</div></section><section><div class="widget" id="searchbox">
+    <h1>タグ</h1><a href="../../../tags/blog.html">blog</a> (2), <a href="../../../tags/document.html">document</a> (2), <a href="../../../tags/sphinx.html">sphinx</a> (2), <a href="../../../tags/tinkerer.html">tinkerer</a> (2)</div></section><section><div class="widget" id="searchbox">
     <h1>Search</h1>
     <form action="../../../search.html" method="get">
         <input type="text" name="q" />
         <button type="submit"><span class="webfont">L</span></button>
     </form>
-</div></section></aside></div></div><footer>&copy; Copyright 2012, apirakun. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!--! end of #container --><!--[if lt IE 7 ]>
-    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-  <![endif]-->
-</body>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2012-2013, apirakun. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
 </html>
