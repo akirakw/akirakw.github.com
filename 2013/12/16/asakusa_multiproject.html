@@ -1,0 +1,445 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="My blog">
+        <meta name="viewport" content="width=device-width">
+        <title>Asakusa Frameworkでマルチプロジェクト &mdash; An Artisan&#39;s Build Act</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="Tinkererをカスタマイズする" href="../../../2012/09/13/customize_tinkerer.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="../../../_static/fb.js"></script><script type="text/javascript" src="../../../_static/google_analytics.js"></script>
+    <meta property="fb:app_id" content="416990048348378"/>
+    
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName("article")[0];
+            var sidebar = document.getElementsByClassName("sidebar")[0];
+
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
+            {
+                var mainwrapper = document.getElementsByClassName("main")[0];
+                documentwrapper.style.minHeight = mainwrapper.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script>
+</head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header>
+            <hgroup>
+              <h1><a href="../../../index.html">An Artisan&#39;s Build Act</a></h1></hgroup>
+          </header>
+      <nav>
+            <ul><li class="quicklink"><div class="rss">
+        <a href="../../../rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
+    </div></li><li class="main-nav">
+                  <a href="../../../index.html">ホーム</a>
+                </li>
+              </ul>
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../../../2012/09/13/customize_tinkerer.html">Tinkererをカスタマイズする</a> &raquo; </li>
+        </ul>
+    <div class="timestamp postmeta">
+            <span>2013-12-16 00:00:00</span>
+        </div>
+    <div class="section" id="asakusa-framework">
+<h1>Asakusa Frameworkでマルチプロジェクト</h1>
+<p>この記事は、  <a class="reference external" href="http://www.adventar.org/calendars/200">Asakusa Framework Advent Calendar 2013</a>  16日目の記事として書いています。</p>
+<p>ここでは、 Asakusa Framework を使って開発するアプリケーションを複数のプロジェクトで管理する「マルチプロジェクト」について紹介します。</p>
+<p>なお文中では Asakusa Framework 0.5.2 から試験的に対応している Gradle を使ったビルド方法を紹介していますが、Mavenでも基本的なところは同じように扱えます。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Asakusa Framework で Gradle を利用する方法について詳しくは <a class="reference external" href="http://asakusafw.s3.amazonaws.com/documents/latest/release/ja/html/application/gradle-plugin.html">Asakusa Framework Documentaiton - Askusa Gradle Plugin利用ガイド</a> を参照してください。。</p>
+</div>
+<div class="section" id="id1">
+<h2>マルチプロジェクト、いつやるの？</h2>
+<p>こんなことがやりたくなった時にマルチプロジェクトしたほうがいいかも、という例をいくつか紹介します。</p>
+<div class="section" id="id2">
+<h3>複数のアプリケーションでデータモデルやビジネスロジックを共有する</h3>
+<p>個人的にはこれが最もあるかなと思います。Asakusaの場合、この中でも特にデータモデル（DMDLの定義）を複数のアプリケーションで共有したい場合が一番多いかと。</p>
+<p>このような場合、共通のデータモデルや演算子のみを管理するプロジェクトを作成し、これを複数のアプリケーションプロジェクトから参照するという構成になります。例えばDMDLのみのプロジェクトを作る場合は、以下のようなイメージですね。</p>
+<p class="blockdiag">
+<img src="../../../_images/blockdiag-2a026937848022dd7bf15ee971e875466e28e89b.png" alt="None" width="448" height="360" />
+</p>
+</div>
+<div class="section" id="id3">
+<h3>アプリケーション本体とテストを分けて管理する</h3>
+<p>先に構成のイメージ例を出すと、最もシンプルなものは以下のイメージですね。</p>
+<p class="blockdiag">
+<img src="../../../_images/blockdiag-49358dee81d3f22ea01214dfd1d0975d945ff60f.png" alt="None" width="448" height="120" />
+</p>
+<p>この管理方式の使いどころはいろいろあると思いますが、いくつか紹介します。</p>
+<div class="section" id="id4">
+<h4>テストの位置づけで分離</h4>
+<p>例えばテストを開発者自身のテストと、ユーザもしくはQ/A担当やテストチーム側で作成するテストという位置づけで分けた場合、前者のテストはアプリケーション本体のプロジェクトで、後者は別プロジェクトで管理するといった使い方です。</p>
+</div>
+<div class="section" id="id5">
+<h4>スローテストを分離</h4>
+<p>やむなくスローテストとなるテストケースを記述する場合に、これを別プロジェクトに分離しておく、という手もあるかと思います。このような場合に多いのは、外部のシステムから出力したデータをそのままテストデータに使う、という場合だと思います。</p>
+</div>
+<div class="section" id="id6">
+<h4>作業環境で分離</h4>
+<p>TestDriverでのテスト定義をExcelで行う場合、Windows上での作業とLinux上での作業を並行して行う場合にテストプロジェクトを分けておくと、いろいろなトラブルに見舞われなくてよいかもしれません。ファイルコピーやファイル共有ではまった、という声をたまに聞くので...。</p>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>はじめてのマルチプロジェクト</h2>
+<p>ここからは実際にマルチプロジェクトを構築するための手順を紹介します。</p>
+<p>ここではシンプルな例として、Asakusa Gradle Plugin のドキュメントページで公開しているサンプルアプリケーションに対して、これを以下の3つのプロジェクトに分解してマルチプロジェクトを構築してみます。</p>
+<ul>
+<li><dl class="first docutils">
+<dt><span class="docutils literal"><span class="pre">dmdl-proj</span></span> <span class="classifier-delimiter">:</span> <span class="classifier">DMDLプロジェクト</span></dt>
+<dd><ul class="first last simple">
+<li>DMDLのみを持つプロジェクト</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><span class="docutils literal"><span class="pre">app-proj</span></span> <span class="classifier-delimiter">:</span> <span class="classifier">アプリケーションプロジェクト</span></dt>
+<dd><ul class="first last simple">
+<li>Asakusa DSLのみを持つプロジェクト。 <span class="docutils literal"><span class="pre">dmdl-proj</span></span> で作成したデータモデルクラスを利用する。</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><span class="docutils literal"><span class="pre">test-proj</span></span> <span class="classifier-delimiter">:</span> <span class="classifier">テストプロジェクト</span></dt>
+<dd><ul class="first last simple">
+<li>テストのみを持つプロジェクト。 <span class="docutils literal"><span class="pre">app-proj</span></span> で作成したバッチアプリケーションを参照する。</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>イメージは以下のようになります。</p>
+<p class="blockdiag">
+<img src="../../../_images/blockdiag-32eb9f715f995f598797a39b5ab3419a4930593e.png" alt="None" width="640" height="120" />
+</p>
+<div class="section" id="id8">
+<h3>0.準備-サンプルアプリケーションの動作確認まで</h3>
+<p>まずは環境の準備と、マルチプロジェクト化する前のサンプルアプリケーションが正常に動作することの確認をしておきましょう。</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="c"># 今回用の作業ディレクトリ</span>
+mkdir -p <span class="nv">$HOME</span>/advent2013/
+<span class="nb">cd</span> <span class="nv">$HOME</span>/advent2013/
+
+<span class="c"># サンプルアプリケーションプロジェクトを取得して展開 (バージョン 0.5.3-RC1)</span>
+wget http://www.asakusafw.com/download/gradle-plugin/asakusa-example-project-0.5.3-RC1.tar.gz
+tar xf asakusa-example-project-*.tar.gz
+<span class="nb">cd </span>asakusa-example-project
+
+<span class="c"># Asakusaのインストールとサンプルアプリのフルビルド</span>
+./gradlew installAsakusafw
+./gradlew build
+
+<span class="c"># 成功したら、一旦cleanしておく</span>
+./gradlew clean
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p>現時点で、本エントリではAsakusa Frameworkのバージョン <span class="docutils literal"><span class="pre">0.5.3-RC1</span></span> を使っています。 <span class="docutils literal"><span class="pre">0.5.2</span></span> のAskusa Gradle Pluginだと少し必要な設定が増えてしまうので。</p>
+<p>また、この記事を試す時に <span class="docutils literal"><span class="pre">0.5.3</span></span> がリリースされていたらそっちを使ったほうがよいと思います。リリース情報は以下のリリースノートを確認してください。</p>
+<p class="last"><a class="reference external" href="http://asakusafw.s3.amazonaws.com/documents/latest/release/ja/html/release-notes.html">http://asakusafw.s3.amazonaws.com/documents/latest/release/ja/html/release-notes.html</a></p>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>1.サンプルアプリケーションを分解する</h3>
+<p>サンプルアプリケーションに含むファイルを以下のように3つにばらしてマルチプロジェクトとして構築します。</p>
+<ul>
+<li><dl class="first docutils">
+<dt><span class="docutils literal"><span class="pre">dmdl-proj</span></span></dt>
+<dd><ul class="first last simple">
+<li>サンプルアプリケーションをコピーして、DMDLのみを残す。</li>
+<li>Asakusa DSLとテストを削除。</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><span class="docutils literal"><span class="pre">app-proj</span></span></dt>
+<dd><ul class="first last simple">
+<li>サンプルアプリケーションをコピーして、アプリケーション(Asakusa DSL)のみを残す。</li>
+<li>DMDLスクリプトとテストを削除。</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><span class="docutils literal"><span class="pre">test-proj</span></span></dt>
+<dd><ul class="first last simple">
+<li>サンプルアプリケーションをコピーして、テストクラスとテストデータのみを残す。</li>
+<li>DMDLスクリプトとAsakusa DSLを削除。</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>上記の通りにプロジェクトを作ります。</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nb">cd</span> <span class="nv">$HOME</span>/advent2013/
+
+<span class="c"># DMDLプロジェクトを作成</span>
+cp -r asakusa-example-project dmdl-proj
+rm -fr dmdl-proj/src/main/java/com
+rm -fr dmdl-proj/src/test/java/com
+rm -fr dmdl-proj/src/test/resources/com
+
+<span class="c"># アプリケーションプロジェクトを作成</span>
+cp -r asakusa-example-project app-proj
+rm -fr app-proj/src/main/dmdl/*
+rm -fr app-proj/src/test/java/com
+rm -fr app-proj/src/test/resources/com
+
+<span class="c"># テストプロジェクトを作成</span>
+cp -r asakusa-example-project <span class="nb">test</span>-proj
+rm -fr <span class="nb">test</span>-proj/src/main/dmdl/*
+rm -fr <span class="nb">test</span>-proj/src/main/java/com
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>2.親プロジェクトの作成</h3>
+<p>マルチプロジェクト全体を管理するための親プロジェクトを作成します。</p>
+<p>Gradleではマルチプロジェクト管理にいろいろな方式があるのですが、ここでは <span class="docutils literal"><span class="pre">master</span></span> という親プロジェクトを他のプロジェクトと同じ階層に作成するフラットレイアウト方式を採用します。</p>
+<p><span class="docutils literal"><span class="pre">master</span></span> プロジェクトにはGradle Wrapperを配置した上で、マルチプロジェクトに含めるプロジェクトを定義する設定ファイル <span class="docutils literal"><span class="pre">settings.gradle</span></span> を作成します。</p>
+<p>では親プロジェクトの作成</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nb">cd</span> <span class="nv">$HOME</span>/advent2013/
+
+<span class="c"># 親プロジェクトディレクトリを作成</span>
+mkdir master
+
+<span class="c"># サンプルアプリケーションからGradle Wrapperだけを持ってくる</span>
+cp -r asakusa-example-project/gradle* master
+
+<span class="c"># settings.gradleの作成</span>
+<span class="nb">echo</span> <span class="s1">&#39;includeFlat &quot;dmdl-proj&quot;, &quot;app-proj&quot;, &quot;test-proj&quot;&#39;</span> &gt; master/settings.gradle
+</pre></div>
+</div>
+<p><span class="docutils literal"><span class="pre">settings.gradle</span></span> にはマルチプロジェクトに含めるプロジェクト名を定義します。今回はDMDL, アプリケーション, テスト用のプロジェクトの3つですね。 <span class="docutils literal"><span class="pre">settings.gradle</span></span> に記述していないプロジェクトは、同階層に存在してもビルド時には無視されます。</p>
+<p><span class="docutils literal"><span class="pre">master/settings.gradle</span></span></p>
+<div class="highlight-none"><div class="highlight"><pre>includeFlat &quot;dmdl-proj&quot;, &quot;app-proj&quot;, &quot;test-proj&quot;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Mavenの場合は、親プロジェクト用の <span class="docutils literal"><span class="pre">pom.xml</span></span> を定義して、そこにマルチプロジェクトに含めるプロジェクトを定義します。</p>
+</div>
+</div>
+<div class="section" id="dmdl">
+<h3>3. DMDLプロジェクト</h3>
+<p>ここからは各プロジェクト設定を見ていきます。 まずは DMDLのみを持つプロジェクトです。アプリケーションから参照される側のプロジェクトですね。</p>
+<div class="section" id="id11">
+<h4>マーカーファイルの配置</h4>
+<p>このプロジェクト自体はこのままなにもせずにビルド出来るのですが、アプリケーション側でDSLコンパイル(Gradle Pluginでは <span class="docutils literal"><span class="pre">compileBatchapp</span></span> タスクで実行)を行う際に、このプロジェクトで生成されたライブラリをバッチアプリケーションプロジェクトに含めるためには <strong>マーカーファイル</strong> というものを配置する必要があります。</p>
+<p>マーカーファイルはプロジェクトのクラスパスが通っているディレクトリ配下に  <span class="docutils literal"><span class="pre">META-INF/asakusa/fragment</span></span> という空ファイルとして作成します。通常は <span class="docutils literal"><span class="pre">src/main/resources</span></span> あたりに置いておけばOKです。</p>
+<p>ではDMDLプロジェクトにマーカーファイルを配置してビルドします。</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nb">cd</span> <span class="nv">$HOME</span>/advent2013/dmdl-proj
+
+<span class="c"># マーカーファイルの作成</span>
+mkdir -p src/main/resources/META-INF/asakusa
+touch src/main/resources/META-INF/asakusa/fragment
+
+<span class="c"># ビルド</span>
+./gradlew build
+</pre></div>
+</div>
+<p>ビルドが成功すると、このプロジェクトではDMDLスクリプトから生成されたデータモデルクラスが生成されます。</p>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>4.アプリケーションプロジェクト</h3>
+<p>Asakusa DSLで記述するアプリケーションのみを持つプロジェクトです。DMDLプロジェクトで作成したデータモデルクラスを利用します。</p>
+<div class="section" id="id13">
+<h4>依存関係の設定</h4>
+<p>アプリケーションプロジェクトからDMDLプロジェクトで作成したデータモデルクラスを利用するためには、アプリケーションプロジェクトのビルド定義 (Gradleの場合は <span class="docutils literal"><span class="pre">build.gradle</span></span> 、Mavenの場合は <span class="docutils literal"><span class="pre">pom.xml</span></span> )でDMDLプロジェクトの成果物を参照するように定義します。</p>
+<p>ここでは、 <span class="docutils literal"><span class="pre">build.gradle</span></span> を編集して、 <span class="docutils literal"><span class="pre">dependencies</span></span> ブロックにDMDLプロジェクトを参照する以下の1行を追加します。</p>
+<p><span class="docutils literal"><span class="pre">app-proj/build.gradle</span></span></p>
+<div class="highlight-groovy"><div class="highlight"><pre><span class="n">dependencies</span> <span class="o">{</span>
+    <span class="o">...</span>
+
+    <span class="c1">// DMDLプロジェクトを参照</span>
+    <span class="n">compile</span> <span class="nf">project</span><span class="o">(</span><span class="s1">&#39;:dmdl-proj&#39;</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><span class="docutils literal"><span class="pre">build.gradle</span></span> を編集したらビルドします。</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nb">cd</span> <span class="nv">$HOME</span>/advent2013/app-proj
+
+<span class="c"># ビルド</span>
+./gradlew build
+</pre></div>
+</div>
+<p>ビルドが成功したら、きちんとDMDLプロジェクトの成果物を参照してビルドが行えたことになります。このプロジェクトではDSLコンパイルが実行され、バッチアプリケーションが生成されます。</p>
+</div>
+</div>
+<div class="section" id="id14">
+<h3>5.テストプロジェクト</h3>
+<p>Asakusa DSLに対するテストクラスとそのテストで利用するテストデータ定義のみを持つプロジェクトです。アプリケーションプロジェクトで作成したアプリケーションを利用します。</p>
+<div class="section" id="id15">
+<h4>依存関係の設定</h4>
+<p>アプリケーションプロジェクトを利用するための依存関係の設定を行います。定義方法は <a class="reference internal" href="#id12">4.アプリケーションプロジェクト</a> で説明した依存関係の設定方法と同様です。</p>
+<p><span class="docutils literal"><span class="pre">build.gradle</span></span> を編集して、アプリケーションプロジェクトを参照する以下の1行を追加します。</p>
+<p><span class="docutils literal"><span class="pre">test-proj/build.gradle</span></span></p>
+<div class="highlight-groovy"><div class="highlight"><pre><span class="n">dependencies</span> <span class="o">{</span>
+    <span class="o">...</span>
+
+    <span class="c1">// アプリケーションプロジェクトを参照</span>
+    <span class="n">compile</span> <span class="nf">project</span><span class="o">(</span><span class="s1">&#39;:app-proj&#39;</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>ビルドします。</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nb">cd</span> <span class="nv">$HOME</span>/advent2013/test-proj
+
+<span class="c"># ビルド</span>
+./gradlew build
+</pre></div>
+</div>
+<p>テストが全て成功すれば、正しく設定されたことになります。</p>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>6.フルビルド</h3>
+<p>マルチプロジェクトに含むプロジェクト全体をビルドしたい場合には、 <span class="docutils literal"><span class="pre">master</span></span> プロジェクト上でビルドします。</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nb">cd</span> <span class="nv">$HOME</span>/advent2013/master
+
+<span class="c"># ビルド</span>
+./gradlew clean build
+</pre></div>
+</div>
+</div>
+<div class="section" id="id17">
+<h3>補足.親プロジェクトで依存関係をまとめて設定</h3>
+<p><a class="reference internal" href="#id12">4.アプリケーションプロジェクト</a> や <a class="reference internal" href="#id14">5.テストプロジェクト</a> では各プロジェクト個別に依存関係を設定しましたが、 Gradleでは親プロジェクト側でマルチプロジェクトに属する依存関係をまとめて設定することも出来ます。</p>
+<p>親プロジェクト側でサブプロジェクトの依存関係を設定するには、 <span class="docutils literal"><span class="pre">master</span></span> プロジェクトに <span class="docutils literal"><span class="pre">build.gradle</span></span> を作成し、以下のように記述します。</p>
+<p><span class="docutils literal"><span class="pre">master/build.gradle</span></span></p>
+<div class="highlight-groovy"><div class="highlight"><pre><span class="n">project</span><span class="o">(</span><span class="s1">&#39;:app-proj&#39;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">afterEvaluate</span> <span class="o">{</span>
+        <span class="n">dependencies</span> <span class="o">{</span>
+            <span class="n">compile</span> <span class="nf">project</span><span class="o">(</span><span class="s1">&#39;:dmdl-proj&#39;</span><span class="o">)</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">project</span><span class="o">(</span><span class="s1">&#39;:test-proj&#39;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">afterEvaluate</span> <span class="o">{</span>
+        <span class="n">dependencies</span> <span class="o">{</span>
+            <span class="n">testCompile</span> <span class="nf">project</span><span class="o">(</span><span class="s1">&#39;:app-proj&#39;</span><span class="o">)</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>この方法だと、マルチプロジェクトに属するプロジェクト全体の依存関係が1ファイルに集約されているのでプロジェクト構成の全体像が把握しやすいかも。</p>
+<p>Gradleではこの他にもいろいろなビルドの定義方法が可能で、例えば親プロジェクトのビルド定義のみですべてのプロジェクトの設定を行う、といったことも可能です。興味があればどのような記述方法がよいかいろいろ検討してみて下さい。かくいう私もこのあたりはまだ試行錯誤してます。Gradleはなかなか奥が深い...。</p>
+</div>
+</div>
+<div class="section" id="id18">
+<h2>まとめ</h2>
+<p>ということでマルチプロジェクトについて紹介しました。</p>
+<p>マルチプロジェクトはうまく使うと全体の見通しがよくなり、重複コードの排除や効率のよい作業分担が可能になるなどメリットが多いと思うので、ぜひ検討してみてください。</p>
+<p>マルチプロジェクトの定義方法は、一度やり方がわかってしまえば簡単だと思います。 <strong>マーカーファイル</strong> を利用するところはAsakusa Framework固有の機能なので、これを忘れてはまらないように気をつけてください。</p>
+</div>
+</div>
+
+    <br/>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <div class="postmeta">
+        <div class="author">
+            <span>投稿者 apirakun</span>
+        </div>
+        <div class="categories">
+            <span>
+                カテゴリー:
+                <a href="../../../categories/asakusafw.html">asakusafw</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                タグ:
+                <a href="../../../tags/asakusafw.html">asakusafw</a></span>
+        </div>
+        </div>
+    <div id="comments">   <div class="fb-comments" data-href="http://akirakw.github.io/2013/12/16/asakusa_multiproject.html">   </div></div>
+<ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../../../2012/09/13/customize_tinkerer.html">Tinkererをカスタマイズする</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section><div class="widget">
+    <h1>Twitter</h1>
+    <a class="twitter-timeline" width="250" height="500" href="https://twitter.com/apirakun" data-widget-id="245795643619151872">@apirakun からのツイート</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+</section><section><div class="widget">
+    <h1>最近の投稿</h1>
+    <ul><li>
+            <a href="#">Asakusa Frameworkでマルチプロジェクト</a>
+        </li><li>
+            <a href="../../../2012/09/13/customize_tinkerer.html">Tinkererをカスタマイズする</a>
+        </li><li>
+            <a href="../../../2012/09/12/create_blog_with_tinkerer.html">TinkererでSphinxなブログ環境を構築する</a>
+        </li><li>
+            <a href="../../../2012/09/12/remodel.html">REMODEL</a>
+        </li></ul>
+</div>
+</section><section><div class="widget">
+    <h1>カテゴリー</h1>
+    <ul><li><a href="../../../categories/asakusafw.html">asakusafw</a> (1)</li><li><a href="../../../categories/misc.html">misc</a> (1)</li><li><a href="../../../categories/sphinx.html">sphinx</a> (2)</li></ul>
+</div></section><section><div class="widget">
+    <h1>タグ</h1><a href="../../../tags/asakusafw.html">asakusafw</a> (1), <a href="../../../tags/blog.html">blog</a> (2), <a href="../../../tags/document.html">document</a> (2), <a href="../../../tags/sphinx.html">sphinx</a> (2), <a href="../../../tags/tinkerer.html">tinkerer</a> (2)</div></section><section><div class="widget" id="searchbox">
+    <h1>Search</h1>
+    <form action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="webfont">L</span></button>
+    </form>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2012-2013, apirakun. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>

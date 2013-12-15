@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/12/16/asakusa_multiproject
    2012/09/13/customize_tinkerer
    2012/09/12/create_blog_with_tinkerer
    2012/09/12/remodel
