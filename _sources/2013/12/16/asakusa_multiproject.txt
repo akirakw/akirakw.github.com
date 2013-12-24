@@ -2,6 +2,9 @@
 Asakusa Frameworkでマルチプロジェクト
 =====================================
 
+..  note::
+    * 2013/12/24 更新: 記事中で使用しているAsakusa Frameworkのバージョンを ``0.5.3-RC1`` から ``0.5.3`` にアップデート
+
 この記事は、  `Asakusa Framework Advent Calendar 2013 <http://www.adventar.org/calendars/200>`_  16日目の記事として書いています。
 
 ここでは、 Asakusa Framework を使って開発するアプリケーションを複数のプロジェクトで管理する「マルチプロジェクト」について紹介します。
@@ -106,8 +109,8 @@ TestDriverでのテスト定義をExcelで行う場合、Windows上での作業�
     mkdir -p $HOME/advent2013/
     cd $HOME/advent2013/
     
-    # サンプルアプリケーションプロジェクトを取得して展開 (バージョン 0.5.3-RC1)
-    wget http://www.asakusafw.com/download/gradle-plugin/asakusa-example-project-0.5.3-RC1.tar.gz
+    # サンプルアプリケーションプロジェクトを取得して展開 (バージョン 0.5.3)
+    wget http://www.asakusafw.com/download/gradle-plugin/asakusa-example-project-0.5.3.tar.gz
     tar xf asakusa-example-project-*.tar.gz
     cd asakusa-example-project
     
@@ -119,9 +122,9 @@ TestDriverでのテスト定義をExcelで行う場合、Windows上での作業�
     ./gradlew clean
     
 ..  attention::
-    現時点で、本エントリではAsakusa Frameworkのバージョン ``0.5.3-RC1`` を使っています。 ``0.5.2`` のAskusa Gradle Pluginだと少し必要な設定が増えてしまうので。
+    本エントリではAsakusa Frameworkのバージョン ``0.5.3`` を使っています。 ``0.5.2`` のAskusa Gradle Pluginだとこのエントリのとおりに記述してもビルドが通らない箇所があるのでご注意ください。
     
-    また、この記事を試す時に ``0.5.3`` がリリースされていたらそっちを使ったほうがよいと思います。リリース情報は以下のリリースノートを確認してください。
+    Asakusa Frameworkのリリース情報は以下のリリースノートを確認してください。
 
     http://asakusafw.s3.amazonaws.com/documents/latest/release/ja/html/release-notes.html
 

@@ -84,6 +84,12 @@
         </div>
         <div class="section" id="asakusa-framework">
 <h1><a href="2013/12/16/asakusa_multiproject.html">Asakusa Frameworkでマルチプロジェクト</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>2013/12/24 更新: 記事中で使用しているAsakusa Frameworkのバージョンを <span class="docutils literal"><span class="pre">0.5.3-RC1</span></span> から <span class="docutils literal"><span class="pre">0.5.3</span></span> にアップデート</li>
+</ul>
+</div>
 <p>この記事は、  <a class="reference external" href="http://www.adventar.org/calendars/200">Asakusa Framework Advent Calendar 2013</a>  16日目の記事として書いています。</p>
 <p>ここでは、 Asakusa Framework を使って開発するアプリケーションを複数のプロジェクトで管理する「マルチプロジェクト」について紹介します。</p>
 <p>なお文中では Asakusa Framework 0.5.2 から試験的に対応している Gradle を使ったビルド方法を紹介していますが、Mavenでも基本的なところは同じように扱えます。</p>
@@ -164,8 +170,8 @@
 mkdir -p <span class="nv">$HOME</span>/advent2013/
 <span class="nb">cd</span> <span class="nv">$HOME</span>/advent2013/
 
-<span class="c"># サンプルアプリケーションプロジェクトを取得して展開 (バージョン 0.5.3-RC1)</span>
-wget http://www.asakusafw.com/download/gradle-plugin/asakusa-example-project-0.5.3-RC1.tar.gz
+<span class="c"># サンプルアプリケーションプロジェクトを取得して展開 (バージョン 0.5.3)</span>
+wget http://www.asakusafw.com/download/gradle-plugin/asakusa-example-project-0.5.3.tar.gz
 tar xf asakusa-example-project-*.tar.gz
 <span class="nb">cd </span>asakusa-example-project
 
@@ -179,8 +185,8 @@ tar xf asakusa-example-project-*.tar.gz
 </div>
 <div class="admonition attention">
 <p class="first admonition-title">Attention</p>
-<p>現時点で、本エントリではAsakusa Frameworkのバージョン <span class="docutils literal"><span class="pre">0.5.3-RC1</span></span> を使っています。 <span class="docutils literal"><span class="pre">0.5.2</span></span> のAskusa Gradle Pluginだと少し必要な設定が増えてしまうので。</p>
-<p>また、この記事を試す時に <span class="docutils literal"><span class="pre">0.5.3</span></span> がリリースされていたらそっちを使ったほうがよいと思います。リリース情報は以下のリリースノートを確認してください。</p>
+<p>本エントリではAsakusa Frameworkのバージョン <span class="docutils literal"><span class="pre">0.5.3</span></span> を使っています。 <span class="docutils literal"><span class="pre">0.5.2</span></span> のAskusa Gradle Pluginだとこのエントリのとおりに記述してもビルドが通らない箇所があるのでご注意ください。</p>
+<p>Asakusa Frameworkのリリース情報は以下のリリースノートを確認してください。</p>
 <p class="last"><a class="reference external" href="http://asakusafw.s3.amazonaws.com/documents/latest/release/ja/html/release-notes.html">http://asakusafw.s3.amazonaws.com/documents/latest/release/ja/html/release-notes.html</a></p>
 </div>
 </div>
